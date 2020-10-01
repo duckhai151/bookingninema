@@ -2236,6 +2236,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -38170,7 +38179,7 @@ var staticRenderFns = [
                       },
                       [
                         _vm._v(
-                          "\n\t\t\t\t\t\t\t\t\tPHIM SẮP CHIẾU\n\t\t\t\t\t\t\t\t"
+                          "\n\t\t\t\t\t\t\t\t\tPHIM SẮP CHIẾU \n\t\t\t\t\t\t\t\t"
                         )
                       ]
                     )
@@ -38227,23 +38236,54 @@ var staticRenderFns = [
           _c("div", { staticClass: "w3l-populohny-grids" }, [
             _c("div", { staticClass: "item vhny-grid" }, [
               _c("div", { staticClass: "box16" }, [
-                _c("a", { attrs: { href: "genre.html" } }, [
-                  _c("figure", [
-                    _c("img", {
-                      staticClass: "img-fluid",
-                      attrs: { src: "cinema/images/m7.jpg", alt: "" }
+                _c(
+                  "a",
+                  {
+                    staticClass: "popup-with-zoom-anim play-view1",
+                    attrs: { href: "#small-dialog1" }
+                  },
+                  [
+                    _c("figure", [
+                      _c("img", {
+                        staticClass: "img-fluid",
+                        attrs: { src: "cinema/images/m7.jpg", alt: "" }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("span", {
+                      staticClass: "fa fa-play video-icon",
+                      attrs: { "aria-hidden": "true" }
                     })
-                  ]),
-                  _vm._v(" "),
-                  _c("span", {
-                    staticClass: "fa fa-play video-icon",
-                    attrs: { "aria-hidden": "true" }
-                  })
-                ])
+                  ]
+                )
               ]),
               _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "zoom-anim-dialog mfp-hide",
+                  attrs: { id: "small-dialog1" }
+                },
+                [
+                  _c("iframe", {
+                    attrs: {
+                      src: "https://player.vimeo.com/video/358205676",
+                      allow: "autoplay; fullscreen",
+                      allowfullscreen: ""
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
               _c("h3", [
-                _c("a", { attrs: { href: "genre.html" } }, [_vm._v("Mulan")])
+                _c(
+                  "a",
+                  {
+                    staticClass: "popup-with-zoom-anim play-view1",
+                    attrs: { href: "#small-dialog2" }
+                  },
+                  [_vm._v("Mulan")]
+                )
               ]),
               _vm._v(" "),
               _c("p", { staticStyle: { "font-size": "15px" } }, [
@@ -38887,6 +38927,23 @@ var staticRenderFns = [
           ])
         ])
       ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "zoom-anim-dialog mfp-hide",
+          attrs: { id: "small-dialog2" }
+        },
+        [
+          _c("iframe", {
+            attrs: {
+              src: "https://player.vimeo.com/video/358205676",
+              allow: "autoplay; fullscreen",
+              allowfullscreen: ""
+            }
+          })
+        ]
+      ),
       _vm._v(" "),
       _c(
         "div",

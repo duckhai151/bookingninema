@@ -8,7 +8,7 @@
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
 							<li class="nav-item">
 								<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
-									PHIM SẮP CHIẾU
+									PHIM SẮP CHIẾU 
 								</a>
 							</li>
 							<li class="nav-item">
@@ -27,14 +27,19 @@
 				<div class="w3l-populohny-grids">
 					<div class="item vhny-grid">
 						<div class="box16">
-							<a href="genre.html">
+							<a href="#small-dialog1" class="popup-with-zoom-anim play-view1">
 								<figure>
 									<img class="img-fluid" src="cinema/images/m7.jpg" alt="">
 								</figure>
 								<span class="fa fa-play video-icon" aria-hidden="true"></span>
 							</a>
 						</div>
-						<h3> <a href="genre.html">Mulan</a></h3>
+						<div id="small-dialog1" class="zoom-anim-dialog mfp-hide">
+							<iframe src="https://player.vimeo.com/video/358205676" allow="autoplay; fullscreen"
+								allowfullscreen=""></iframe>
+						</div>
+								
+						<h3> <a href="#small-dialog2" class="popup-with-zoom-anim play-view1">Mulan</a></h3>
 						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> 1 Hr 25 min</p>
 						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Category:</span> Action</p>
 						<div class="button-center text-center mt-4">
@@ -230,13 +235,17 @@
 			</div>
 		</div>
         <!-- Modal -->
+			<div id="small-dialog2" class="zoom-anim-dialog mfp-hide">
+				<iframe src="https://player.vimeo.com/video/358205676" allow="autoplay; fullscreen"
+					allowfullscreen=""></iframe>
+			</div>
         <div style="margin-top: 200px;" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Toys Story 4</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    	<span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
