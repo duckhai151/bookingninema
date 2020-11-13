@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Showtime extends Model
 {
-    public function showdates() {
-        return $this->belongsToMany('App\Models\Showdate');
+    public function movie() {
+        return $this->belongsTo('App\Models\Movie');
+    }
+
+    public function room() {
+        return $this->belongsTo('App\Models\Room');
     }
 }

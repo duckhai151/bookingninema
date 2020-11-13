@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('myhome');
-});
+Route::get('/', 'API\HomeController@index');
 
 Route::get('/seat', function () {
     return view('myhome');

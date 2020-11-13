@@ -2,63 +2,44 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+
+
+use App\Repositories\Movie\MovieRepositoryInterface;
+use App\Models\Movie;
+use App\Models\Showdate;
+use App\Models\Showtime;
 use Illuminate\Http\Request;
 
-class MovieController extends Controller
+class MovieController extends ApiController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    protected $movieRepository;
+
+    public function __construct(MovieRepositoryInterface $movieRepository)
     {
-        //
+        $this->movieRepository = $movieRepository;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function getPost($id)
     {
-        //
+        $movies = $this->movieRepository->getMovieById(1);
+        return $movies;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function movies()
     {
-        //
+        $movies = Movie::movies();
+        return array_merge(self::success(), [
+            'movies' => $movies,
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function movie(Request $request)
     {
-        //
+        $movie = $this->movieRepository->getMovieById($request->id);
+        return array_merge(self::success(), [
+            'movie' => $movie,
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }
