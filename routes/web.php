@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'API\HomeController@index');
+Route::get('/{any}', 'API\HomeController@index')->where('any', '.*');
 
 Route::get('/seat', function () {
     return view('myhome');

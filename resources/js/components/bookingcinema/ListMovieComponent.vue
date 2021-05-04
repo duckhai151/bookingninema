@@ -8,7 +8,7 @@
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
 							<li class="nav-item">
 								<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
-									PHIM SẮP CHIẾU 
+									PHIM SẮP CHIẾU
 								</a>
 							</li>
 							<li class="nav-item">
@@ -25,207 +25,18 @@
 					</div>
 				</div>
 				<div class="w3l-populohny-grids">
-					<div class="item vhny-grid">
+					<div class="item vhny-grid" v-for="movie in movies">
 						<div class="box16">
-							<a href="#small-dialog1" class="popup-with-zoom-anim play-view1">
-								<figure>
-									<img class="img-fluid" src="cinema/images/m7.jpg" alt="">
-								</figure>
-								<span class="fa fa-play video-icon" aria-hidden="true"></span>
-							</a>
-						</div>
-						<div id="small-dialog1" class="zoom-anim-dialog mfp-hide">
-							<iframe src="https://player.vimeo.com/video/358205676" allow="autoplay; fullscreen"
-								allowfullscreen=""></iframe>
-						</div>
-								
-						<h3> <a href="#small-dialog2" class="popup-with-zoom-anim play-view1">Mulan</a></h3>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> 1 Hr 25 min</p>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Category:</span> Action</p>
-						<div class="button-center text-center mt-4">
-							<a href="genre.html" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Booking Now</a>
-						</div>
-					</div>
-					<div class="item vhny-grid">
-						<div class="box16">
-							<a href="genre.html">
-								<figure>
-									<img class="img-fluid" src="cinema/images/m3.jpg" alt="">
-								</figure>
+                            <router-link :to="{ name: 'detail-movie', params: { id: movie.id }}">
+                                <figure>
+                                    <img class="img-fluid" src="cinema/images/m4.jpg" alt="">
+                                </figure>
 
-								<span class="fa fa-play video-icon" aria-hidden="true"></span>
-							</a>
+                                <span class="fa fa-play video-icon" aria-hidden="true"></span>
+                            </router-link>
 						</div>
-						<h3> <a href="genre.html">Mulan</a></h3>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> 1 Hr 25 min</p>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Category:</span> Action</p>
-						<div class="button-center text-center mt-4">
-							<a href="genre.html" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Booking Now</a>
-						</div>
-					</div>
-					<div class="item vhny-grid">
-						<div class="box16">
-							<a href="genre.html">
-								<figure>
-									<img class="img-fluid" src="cinema/images/m4.jpg" alt="">
-								</figure>
-							
-								<span class="fa fa-play video-icon" aria-hidden="true"></span>
-							</a>
-						</div>
-						<h3> <a href="genre.html">Mulan</a></h3>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> 1 Hr 25 min</p>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Category:</span> Action</p>
-						<div class="button-center text-center mt-4">
-							<a href="genre.html" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Booking Now</a>
-						</div>
-					</div>
-					<div class="item vhny-grid">
-						<div class="box16">
-							<a href="genre.html">
-								<figure>
-									<img class="img-fluid" src="cinema/images/m5.jpg" alt="">
-								</figure>
-
-								<span class="fa fa-play video-icon" aria-hidden="true"></span>
-							</a>
-						</div>
-						<h3> <a href="genre.html">Mulan</a></h3>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> 1 Hr 25 min</p>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Category:</span> Action</p>
-						<div class="button-center text-center mt-4">
-							<a href="genre.html" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Booking Now</a>
-						</div>
-					</div>
-					<div class="item vhny-grid">
-						<div class="box16">
-							<a href="genre.html">
-								<figure>
-									<img class="img-fluid" src="cinema/images/m7.jpg" alt="">
-								</figure>
-								<span class="fa fa-play video-icon" aria-hidden="true"></span>
-							</a>
-						</div>
-						<h3> <a href="genre.html">Mulan</a></h3>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> 1 Hr 25 min</p>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Category:</span> Action</p>
-						<div class="button-center text-center mt-4">
-							<a href="genre.html" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Booking Now</a>
-						</div>
-					</div>
-					<div class="item vhny-grid">
-						<div class="box16">
-							<a href="genre.html">
-								<figure>
-									<img class="img-fluid" src="cinema/images/m3.jpg" alt="">
-								</figure>
-
-								<span class="fa fa-play video-icon" aria-hidden="true"></span>
-							</a>
-						</div>
-						<h3> <a href="genre.html">Mulan</a></h3>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> 1 Hr 25 min</p>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Category:</span> Action</p>
-						<div class="button-center text-center mt-4">
-							<a href="genre.html" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Booking Now</a>
-						</div>
-					</div>
-					<div class="item vhny-grid">
-						<div class="box16">
-							<a href="genre.html">
-								<figure>
-									<img class="img-fluid" src="cinema/images/m4.jpg" alt="">
-								</figure>
-							
-								<span class="fa fa-play video-icon" aria-hidden="true"></span>
-							</a>
-						</div>
-						<h3> <a href="genre.html">Mulan</a></h3>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> 1 Hr 25 min</p>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Category:</span> Action</p>
-						<div class="button-center text-center mt-4">
-							<a href="genre.html" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Booking Now</a>
-						</div>
-					</div>
-					<div class="item vhny-grid">
-						<div class="box16">
-							<a href="genre.html">
-								<figure>
-									<img class="img-fluid" src="cinema/images/m5.jpg" alt="">
-								</figure>
-
-								<span class="fa fa-play video-icon" aria-hidden="true"></span>
-							</a>
-						</div>
-						<h3> <a href="genre.html">Mulan</a></h3>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> 1 Hr 25 min</p>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Category:</span> Action</p>
-						<div class="button-center text-center mt-4">
-							<a href="genre.html" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Booking Now</a>
-						</div>
-					</div>
-					<div class="item vhny-grid">
-						<div class="box16">
-							<a href="genre.html">
-								<figure>
-									<img class="img-fluid" src="cinema/images/m7.jpg" alt="">
-								</figure>
-								<span class="fa fa-play video-icon" aria-hidden="true"></span>
-							</a>
-						</div>
-						<h3> <a href="genre.html">Mulan</a></h3>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> 1 Hr 25 min</p>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Category:</span> Action</p>
-						<div class="button-center text-center mt-4">
-							<a href="genre.html" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Booking Now</a>
-						</div>
-					</div>
-					<div class="item vhny-grid">
-						<div class="box16">
-							<a href="genre.html">
-								<figure>
-									<img class="img-fluid" src="cinema/images/m3.jpg" alt="">
-								</figure>
-
-								<span class="fa fa-play video-icon" aria-hidden="true"></span>
-							</a>
-						</div>
-						<h3> <a href="genre.html">Mulan</a></h3>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> 1 Hr 25 min</p>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Category:</span> Action</p>
-						<div class="button-center text-center mt-4">
-							<a href="genre.html" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Booking Now</a>
-						</div>
-					</div>
-					<div class="item vhny-grid">
-						<div class="box16">
-							<a href="genre.html">
-								<figure>
-									<img class="img-fluid" src="cinema/images/m4.jpg" alt="">
-								</figure>
-							
-								<span class="fa fa-play video-icon" aria-hidden="true"></span>
-							</a>
-						</div>
-						<h3> <a href="genre.html">Mulan</a></h3>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> 1 Hr 25 min</p>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Category:</span> Action</p>
-						<div class="button-center text-center mt-4">
-							<a href="genre.html" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Booking Now</a>
-						</div>
-					</div>
-					<div class="item vhny-grid">
-						<div class="box16">
-							<a href="genre.html">
-								<figure>
-									<img class="img-fluid" src="cinema/images/m5.jpg" alt="">
-								</figure>
-
-								<span class="fa fa-play video-icon" aria-hidden="true"></span>
-							</a>
-						</div>
-						<h3> <a href="genre.html">Mulan</a></h3>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> 1 Hr 25 min</p>
+						<h3> <a href="genre.html">{{ movie.name }}</a></h3>
+						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> {{ movie.running_time }}</p>
 						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Category:</span> Action</p>
 						<div class="button-center text-center mt-4">
 							<a href="genre.html" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Booking Now</a>
@@ -304,7 +115,21 @@
 
 <script>
 export default {
-
+    data() {
+        return {
+            movies: [],
+        }
+    },
+    created() {
+        this.listMovie();
+    },
+    methods: {
+        listMovie() {
+            axios.get('movies').then(res => {
+                this.movies = res.data.movies;
+            });
+        }
+    },
 }
 </script>
 

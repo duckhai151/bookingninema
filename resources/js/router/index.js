@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Master from '../components/layouts/MasterComponent'
 import Home from '../components/bookingcinema/HomeComponent'
 import Seat from '../components/bookingcinema/SeatComponent'
+import DetailMovie from '../components/bookingcinema/DetailMovieComponent'
 
 Vue.use(VueRouter);
 
@@ -18,6 +19,11 @@ const routes = [
             {
                 path: '/seat',
                 component: Seat,
+            },
+            {
+                path:  '/movie/:id',
+                component: DetailMovie,
+                name: 'detail-movie',
             },
         ]
     },

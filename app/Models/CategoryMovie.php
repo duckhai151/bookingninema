@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MovieCategory extends Model
+class CategoryMovie extends Model
 {
     protected $table = 'category_movie';
 }

@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/movies', 'Api\MovieController@movies');
-Route::get('/movie', 'Api\MovieController@movie');
+Route::get('/movie/{id}', 'Api\MovieController@movie');
 Route::get('/room', 'Api\RoomController@room');
 Route::get('/showtimes', 'Api\ShowtimeController@showtimes');
 

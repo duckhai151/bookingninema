@@ -4,14 +4,32 @@ namespace App\Repositories\Movie;
 
 use App\Models\Movie;
 use App\Models\Showtime;
+use App\Repositories\Base\BaseRepository;
 use App\Repositories\Movie\MovieRepositoryInterface;
 
-class MovieRepository implements MovieRepositoryInterface
+class MovieRepository extends BaseRepository implements MovieRepositoryInterface
 {
+    protected $model;
+
+    public function __construct()
+    {
+        $this->model = $this->getModel();
+    }
+
+    public function getModel()
+    {
+        return Movie::class;
+    }
+
+    public function getMovies()
+    {
+        $movies = $this->model::all();
+        return $movies;
+    }
 
     public function getMovieById($id)
     {
-        $movie = Movie::findOrFail($id);
+        $movie = $this->model::findOrFail($id);
         $showtimes = Showtime::where('movie_id', $id)
                             ->get();
         $formatShowtimes = $this->formatShowtime($showtimes);

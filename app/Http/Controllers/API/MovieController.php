@@ -21,25 +21,25 @@ class MovieController extends ApiController
 
     public function getPost($id)
     {
-        $movies = $this->movieRepository->getMovieById(1);
+        $movies = $this->movieRepository->getMovieById($id);
         return $movies;
     }
 
     public function movies()
     {
-        $movies = Movie::movies();
+        $movies = $this->movieRepository->getMovies();
         return array_merge(self::success(), [
             'movies' => $movies,
         ]);
     }
 
-    public function movie(Request $request)
+    public function movie(Request $request, $id)
     {
-        $movie = $this->movieRepository->getMovieById($request->id);
+        $movie = $this->movieRepository->getMovieById($id);
         return array_merge(self::success(), [
             'movie' => $movie,
         ]);
     }
 
-    
+
 }

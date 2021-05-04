@@ -12,9 +12,9 @@ import SlideFooter from '../bookingcinema/SlideFooterComponent'
 import ListMovie from '../bookingcinema/ListMovieComponent'
 export default {
     components: {
-		'slide-header-component' : SlideHeader,
-		'slide-footer-component' : SlideFooter,
-		'list-movie-component' : ListMovie,
+      'slide-header-component' : SlideHeader,
+      'slide-footer-component' : SlideFooter,
+      'list-movie-component' : ListMovie,
     }
 }
 </script>

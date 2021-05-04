@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Repositories\Movie\MovieRepository;
-use App\Repositories\Movie\MovieRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -15,7 +13,15 @@ class RepositoryServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app->bind(MovieRepositoryInterface::class, MovieRepository::class);
+        $repositories = [
+          'Movie',
+        ];
+        foreach($repositories as $repo) {
+            $this->app->bind(
+                'App\\Repositories\\' . $repo . '\\' . $repo . 'RepositoryInterface',
+                'App\\Repositories\\' . $repo . '\\' . $repo . 'Repository'
+            );
+        }
     }
 }
 
