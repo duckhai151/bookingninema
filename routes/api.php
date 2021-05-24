@@ -18,10 +18,30 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::namespace('API')->group(function () {
+    /* Movie */
+    Route::prefix('movie')->group(function () {
+        Route::get('/', 'MovieController@movies');
+        Route::get('/{id}', 'MovieController@movie');
+    });
 
-Route::get('/movies', 'Api\MovieController@movies');
-Route::get('/movie/{id}', 'Api\MovieController@movie');
-Route::get('/room', 'Api\RoomController@room');
-Route::get('/showtimes', 'Api\ShowtimeController@showtimes');
+    /* Seat */
+    Route::prefix('seat')->group(function () {
+        Route::get('/', 'SeatController@seatByShowtime');
+        Route::get('/{movieId}', 'SeatController@seatByRoom');
+    });
+
+    /* Room */
+    Route::prefix('room')->group(function () {
+        Route::get('/room', 'RoomController@room');
+    });
+
+    /* Showtime */
+    Route::prefix('showtime')->group(function () {
+        Route::get('/', 'ShowtimeController@showtimes');
+        Route::get('/{movieId}', 'ShowTimeController@showTimeByMovie');
+    });
+});
+
 
 

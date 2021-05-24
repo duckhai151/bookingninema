@@ -14,7 +14,9 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $repositories = [
-          'Movie',
+            'Movie',
+            'Seat',
+            'ShowTime',
         ];
         foreach($repositories as $repo) {
             $this->app->bind(

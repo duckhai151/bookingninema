@@ -10,7 +10,15 @@ class Seat extends Model
         return $this->belongsTo('App\Models\Room');
     }
 
+    public function seatStatus() {
+        return $this->belongsTo('App\Models\SeatStatus', 'id', 'seat_id');
+    }
+
     public function type() {
         return $this->belongsTo('App\Models\SeatType');
+    }
+
+    public function getSeatStatusAttribute() {
+
     }
 }

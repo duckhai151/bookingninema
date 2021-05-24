@@ -125,7 +125,7 @@ export default {
     },
     methods: {
         listMovie() {
-            axios.get('movies').then(res => {
+            axios.get('movie').then(res => {
                 this.movies = res.data.movies;
             });
         }

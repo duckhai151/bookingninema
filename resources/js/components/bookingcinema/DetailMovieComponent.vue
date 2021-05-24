@@ -2,6 +2,9 @@
     <section class="w3l-grids">
         <div class="grids-main py-5">
             <div class="container py-lg-3">
+                <h2>Nội dung phim </h2>
+                <hr>
+                <img class="img-fluid" src="" alt="">
                 {{ $route.params.id }}
             </div>
         </div>
