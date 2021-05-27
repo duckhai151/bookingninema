@@ -21,7 +21,7 @@ class ShowTimeRepository extends BaseRepository implements ShowTimeRepositoryInt
 
     public function showTimeByMovie($movieId)
     {
-        $showtime = $this->model::where('movie_id', $movieId)->get();
+        $showtime = $this->model::where('movie_id', $movieId)->orderBy('time', 'ASC')->get()->groupBy('date_showtime');
         return $showtime;
     }
 }

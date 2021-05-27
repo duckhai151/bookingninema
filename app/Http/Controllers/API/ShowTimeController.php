@@ -15,7 +15,7 @@ class ShowTimeController extends ApiController
         $this->showTimeRepository = $showTimeRepository;
     }
 
-    public function showTimeByMovie($movieId) {
-        return $this->showTimeRepository->showTimeByMovie($movieId);
+    public function showTimeByMovie(Request $request) {
+        return $this->showTimeRepository->showTimeByMovie($request->movieId);
     }
 }

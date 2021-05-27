@@ -39,71 +39,45 @@
 						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> {{ movie.running_time }}</p>
 						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Category:</span> Action</p>
 						<div class="button-center text-center mt-4">
-							<a href="genre.html" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Booking Now</a>
+							<a href="genre.html" v-on:click="getShowtime(movie.id)" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Booking Now</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
         <!-- Modal -->
-			<div id="small-dialog2" class="zoom-anim-dialog mfp-hide">
-				<iframe src="https://player.vimeo.com/video/358205676" allow="autoplay; fullscreen"
-					allowfullscreen=""></iframe>
-			</div>
+        <div id="small-dialog2" class="zoom-anim-dialog mfp-hide">
+            <iframe src="https://player.vimeo.com/video/358205676" allow="autoplay; fullscreen"
+                allowfullscreen=""></iframe>
+        </div>
         <div style="margin-top: 200px;" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Toys Story 4</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ movieName }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     	<span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h3 style="text-align:center;">NDK Cinema</h3>
-                    <!-- Nav tabs -->
                     <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#menu0">
-                            <span style="font-size: 38px; color: black;">16</span><span style="font-size: 20px; color: black;">/09 - T5</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#menu1">
-                            <span style="font-size: 38px; color: black;">16</span><span style="font-size: 20px; color: black;">/09 - T5</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#menu2">
-                            <span style="font-size: 38px; color: black;">16</span><span style="font-size: 20px; color: black;">/09 - T5</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#menu2">
-                            <span style="font-size: 38px; color: black;">16</span><span style="font-size: 20px; color: black;">/09 - T5</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#menu2">
-                            <span style="font-size: 38px; color: black;">16</span><span style="font-size: 20px; color: black;">/09 - T5</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#menu2">
-                            <span style="font-size: 38px; color: black;">16</span><span style="font-size: 20px; color: black;">/09 - T5</span>
-                        </a>
-                    </li>
+                        <li class="nav-item" v-for="(showtime, name, index) in this.showtimes">
+                            <a v-if="index == 0" class="nav-link active" data-toggle="tab" :href="'#menu' + index">
+                                <span style="font-size: 30px; color: black;">{{ name }}</span>
+                            </a>
+                            <a v-else class="nav-link" data-toggle="tab" :href="'#menu' + index">
+                                <span style="font-size: 30px; color: black;">{{ name }}</span>
+                            </a>
+                        </li>
                     </ul>
-
-                    <!-- Tab panes -->
                     <div class="tab-content">
-                    <div class="tab-pane container active" id="menu0">
-                        <a class="btn btn-secondary">10:00</a>
-                        <a class="btn btn-secondary">11:00</a>
-                        <a class="btn btn-secondary">12:30</a>
-                    </div>
-                    <div class="tab-pane container fade" id="menu1">...</div>
-                    <div class="tab-pane container fade" id="menu2">...</div>
+                        <div v-for="(showtime, name, index) in this.showtimes" v-if="index == 0" class="tab-pane container active" :id="'menu'+index">
+                            <router-link v-for="show in showtime" :to="{name: 'booking-movie', params: { showtimeId: show.id, roomId: show.room_id }}" data-dismiss="modal" tag="a" class="btn btn-secondary">{{ show.time_showtime }}</router-link>
+                        </div>
+                        <div v-else class="tab-pane container fade" :id="'menu'+index">
+                            <router-link v-for="show in showtime" :to="{name: 'booking-movie', params: { showtimeId: show.id, roomId: show.room_id }}" data-dismiss="modal" tag="a" class="btn btn-secondary">{{ show.time_showtime }}</router-link>
+                        </div>
                     </div>
                 </div>
                 </div>
@@ -117,7 +91,9 @@
 export default {
     data() {
         return {
+            movieName: '',
             movies: [],
+            showtimes: [],
         }
     },
     created() {
@@ -128,6 +104,21 @@ export default {
             axios.get('movie').then(res => {
                 this.movies = res.data.movies;
             });
+        },
+        getShowtime(movieId) {
+            this.movieName = this.movies.find(x => x.id == movieId).name;
+            axios.get('showtime', {
+                params: {
+                    movieId: movieId
+                }
+            }).then(res => {
+                console.log(res.data)
+                this.showtimes = res.data;
+            });
+        },
+        redirectBooking(showtimeId) {
+            console.log('abc');
+            // this.$router.push({path: '/booking'});
         }
     },
 }

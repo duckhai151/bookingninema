@@ -42,9 +42,9 @@ body{
 }
 
 h1,h2,h3,h4,h5,h6{
-	margin:0;	
+	margin:0;
 	font-family: 'Kotta One', serif;
-}	
+}
 p{
 	margin:0;
 }
@@ -258,22 +258,22 @@ ul.book-right li {
 	}
 	.content h1 {
 		font-size: 33px;
-	}	
+	}
 }
 @media (max-width: 1366px){
 	.main {
 		width: 53%;
-	}	
+	}
 }
 @media (max-width: 1280px){
 	.main {
 		width: 56%;
-	}	
+	}
 }
 @media (max-width: 1080px){
 	.main {
 		width: 67%;
-	}	
+	}
 }
 @media (max-width: 1024px){
 	div.seatCharts-container {
@@ -282,7 +282,7 @@ ul.book-right li {
 	}
 	.booking-details {
 		width: 36%;
-	}	
+	}
 }
 @media (max-width: 991px){
 	div.seatCharts-container {
@@ -290,7 +290,7 @@ ul.book-right li {
 	}
 	.content h1 {
 		font-size: 31px;
-	}	
+	}
 }
 @media (max-width: 800px){
 	.main {
@@ -311,7 +311,7 @@ ul.book-right li {
 	}
 	.main h2 {
 		font-size: 25px;
-	}	
+	}
 }
 @media (max-width: 768px){
 	div.seatCharts-container {
@@ -322,7 +322,7 @@ ul.book-right li {
 	}
 	.content {
 		padding: 112px 0;
-	}	
+	}
 }
 @media (max-width: 736px){
 	div.seatCharts-container {
@@ -336,14 +336,14 @@ ul.book-right li {
 	}
 	.content {
 		padding: 74px 0;
-	}	
+	}
 }
 @media (max-width: 667px){
 	div.seatCharts-container {
 		width: 100%;
 		padding: 0 0px 0 0;
 	    border: none;
-	}	
+	}
 	.booking-details {
 		width: 100%;
 		margin-top: 35px;
@@ -365,7 +365,7 @@ ul.book-right li {
 	}
 	.front {
 		margin: 5px 6px 45px 6px;
-	}	
+	}
 }
 @media (max-width: 600px){
 	.main h2 {
@@ -376,12 +376,12 @@ ul.book-right li {
 	}
 	.front {
 		margin: 5px 6px 36px 6px;
-	}	
+	}
 }
 @media (max-width: 568px){
 	.main {
 		width: 68%;
-	}	
+	}
 }
 @media (max-width: 480px){
 	.main {
@@ -393,7 +393,7 @@ ul.book-right li {
 		line-height: 1.8em;
 		width: 90%;
 		margin: 0 auto;
-	}	
+	}
 }
 @media (max-width: 414px){
 	.main {
@@ -405,7 +405,7 @@ ul.book-right li {
 		line-height: 26px;
 		margin: 3px;
 		font-size: 12px;
-	}	
+	}
 	.content h1 {
 		font-size: 22px;
 	}
@@ -418,7 +418,7 @@ ul.book-right li {
 		height: 23px;
 		width: 23px;
 		line-height: 24px;
-	}	
+	}
 	.content {
 		padding: 45px 0;
 	}

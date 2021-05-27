@@ -17,7 +17,8 @@ const routes = [
                 component: Home,
             },
             {
-                path: '/seat',
+                path: '/booking',
+                name: 'booking-movie',
                 component: Seat,
             },
             {

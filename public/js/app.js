@@ -2072,36 +2072,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      movies: []
+      movieName: '',
+      movies: [],
+      showtimes: []
     };
   },
   created: function created() {
@@ -2114,6 +2090,24 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('movie').then(function (res) {
         _this.movies = res.data.movies;
       });
+    },
+    getShowtime: function getShowtime(movieId) {
+      var _this2 = this;
+
+      this.movieName = this.movies.find(function (x) {
+        return x.id == movieId;
+      }).name;
+      axios.get('showtime', {
+        params: {
+          movieId: movieId
+        }
+      }).then(function (res) {
+        console.log(res.data);
+        _this2.showtimes = res.data;
+      });
+    },
+    redirectBooking: function redirectBooking(showtimeId) {
+      console.log('abc'); // this.$router.push({path: '/booking'});
     }
   }
 });
@@ -2181,14 +2175,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      seats: []
+    };
+  },
+  created: function created() {
+    console.log(this.$route.params);
+    this.getSeat(this.$route.params.showtimeId, this.$route.params.roomId);
+  },
+  methods: {
+    getSeat: function getSeat(showtimeId, roomId) {
+      var _this = this;
+
+      axios.get('seat', {
+        params: {
+          showtimeId: showtimeId,
+          roomId: roomId
+        }
+      }).then(function (res) {
+        console.log(res.data);
+        _this.seats = res.data;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -38241,7 +38253,25 @@ var render = function() {
               _vm._v(" "),
               _vm._m(1, true),
               _vm._v(" "),
-              _vm._m(2, true)
+              _c("div", { staticClass: "button-center text-center mt-4" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-info watch-button",
+                    attrs: {
+                      href: "genre.html",
+                      "data-toggle": "modal",
+                      "data-target": ".bd-example-modal-lg"
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.getShowtime(movie.id)
+                      }
+                    }
+                  },
+                  [_vm._v("Booking Now")]
+                )
+              ])
             ])
           }),
           0
@@ -38249,9 +38279,161 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(3),
+    _vm._m(2),
     _vm._v(" "),
-    _vm._m(4)
+    _c(
+      "div",
+      {
+        staticClass: "modal fade bd-example-modal-lg",
+        staticStyle: { "margin-top": "200px" },
+        attrs: {
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "myLargeModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-lg" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c(
+                "h5",
+                {
+                  staticClass: "modal-title",
+                  attrs: { id: "exampleModalLabel" }
+                },
+                [_vm._v(_vm._s(_vm.movieName))]
+              ),
+              _vm._v(" "),
+              _vm._m(3)
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "ul",
+                { staticClass: "nav nav-tabs" },
+                _vm._l(this.showtimes, function(showtime, name, index) {
+                  return _c("li", { staticClass: "nav-item" }, [
+                    index == 0
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "nav-link active",
+                            attrs: {
+                              "data-toggle": "tab",
+                              href: "#menu" + index
+                            }
+                          },
+                          [
+                            _c(
+                              "span",
+                              {
+                                staticStyle: {
+                                  "font-size": "30px",
+                                  color: "black"
+                                }
+                              },
+                              [_vm._v(_vm._s(name))]
+                            )
+                          ]
+                        )
+                      : _c(
+                          "a",
+                          {
+                            staticClass: "nav-link",
+                            attrs: {
+                              "data-toggle": "tab",
+                              href: "#menu" + index
+                            }
+                          },
+                          [
+                            _c(
+                              "span",
+                              {
+                                staticStyle: {
+                                  "font-size": "30px",
+                                  color: "black"
+                                }
+                              },
+                              [_vm._v(_vm._s(name))]
+                            )
+                          ]
+                        )
+                  ])
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "tab-content" },
+                _vm._l(this.showtimes, function(showtime, name, index) {
+                  return index == 0
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "tab-pane container active",
+                          attrs: { id: "menu" + index }
+                        },
+                        _vm._l(showtime, function(show) {
+                          return _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-secondary",
+                              attrs: {
+                                to: {
+                                  name: "booking-movie",
+                                  params: {
+                                    showtimeId: show.id,
+                                    roomId: show.room_id
+                                  }
+                                },
+                                "data-dismiss": "modal",
+                                tag: "a"
+                              }
+                            },
+                            [_vm._v(_vm._s(show.time_showtime))]
+                          )
+                        }),
+                        1
+                      )
+                    : _c(
+                        "div",
+                        {
+                          staticClass: "tab-pane container fade",
+                          attrs: { id: "menu" + index }
+                        },
+                        _vm._l(showtime, function(show) {
+                          return _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-secondary",
+                              attrs: {
+                                to: {
+                                  name: "booking-movie",
+                                  params: {
+                                    showtimeId: show.id,
+                                    roomId: show.room_id
+                                  }
+                                },
+                                "data-dismiss": "modal",
+                                tag: "a"
+                              }
+                            },
+                            [_vm._v(_vm._s(show.time_showtime))]
+                          )
+                        }),
+                        1
+                      )
+                }),
+                0
+              )
+            ])
+          ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -38349,25 +38531,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "button-center text-center mt-4" }, [
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-info watch-button",
-          attrs: {
-            href: "genre.html",
-            "data-toggle": "modal",
-            "data-target": ".bd-example-modal-lg"
-          }
-        },
-        [_vm._v("Booking Now")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
       "div",
       {
@@ -38390,255 +38553,16 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "div",
+      "button",
       {
-        staticClass: "modal fade bd-example-modal-lg",
-        staticStyle: { "margin-top": "200px" },
+        staticClass: "close",
         attrs: {
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "myLargeModalLabel",
-          "aria-hidden": "true"
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
         }
       },
-      [
-        _c("div", { staticClass: "modal-dialog modal-lg" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _c("div", { staticClass: "modal-header" }, [
-              _c(
-                "h5",
-                {
-                  staticClass: "modal-title",
-                  attrs: { id: "exampleModalLabel" }
-                },
-                [_vm._v("Toys Story 4")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "close",
-                  attrs: {
-                    type: "button",
-                    "data-dismiss": "modal",
-                    "aria-label": "Close"
-                  }
-                },
-                [
-                  _c("span", { attrs: { "aria-hidden": "true" } }, [
-                    _vm._v("×")
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c("h3", { staticStyle: { "text-align": "center" } }, [
-                _vm._v("NDK Cinema")
-              ]),
-              _vm._v(" "),
-              _c("ul", { staticClass: "nav nav-tabs" }, [
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link active",
-                      attrs: { "data-toggle": "tab", href: "#menu0" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticStyle: { "font-size": "38px", color: "black" }
-                        },
-                        [_vm._v("16")]
-                      ),
-                      _c(
-                        "span",
-                        {
-                          staticStyle: { "font-size": "20px", color: "black" }
-                        },
-                        [_vm._v("/09 - T5")]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { "data-toggle": "tab", href: "#menu1" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticStyle: { "font-size": "38px", color: "black" }
-                        },
-                        [_vm._v("16")]
-                      ),
-                      _c(
-                        "span",
-                        {
-                          staticStyle: { "font-size": "20px", color: "black" }
-                        },
-                        [_vm._v("/09 - T5")]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { "data-toggle": "tab", href: "#menu2" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticStyle: { "font-size": "38px", color: "black" }
-                        },
-                        [_vm._v("16")]
-                      ),
-                      _c(
-                        "span",
-                        {
-                          staticStyle: { "font-size": "20px", color: "black" }
-                        },
-                        [_vm._v("/09 - T5")]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { "data-toggle": "tab", href: "#menu2" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticStyle: { "font-size": "38px", color: "black" }
-                        },
-                        [_vm._v("16")]
-                      ),
-                      _c(
-                        "span",
-                        {
-                          staticStyle: { "font-size": "20px", color: "black" }
-                        },
-                        [_vm._v("/09 - T5")]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { "data-toggle": "tab", href: "#menu2" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticStyle: { "font-size": "38px", color: "black" }
-                        },
-                        [_vm._v("16")]
-                      ),
-                      _c(
-                        "span",
-                        {
-                          staticStyle: { "font-size": "20px", color: "black" }
-                        },
-                        [_vm._v("/09 - T5")]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { "data-toggle": "tab", href: "#menu2" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticStyle: { "font-size": "38px", color: "black" }
-                        },
-                        [_vm._v("16")]
-                      ),
-                      _c(
-                        "span",
-                        {
-                          staticStyle: { "font-size": "20px", color: "black" }
-                        },
-                        [_vm._v("/09 - T5")]
-                      )
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "tab-content" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "tab-pane container active",
-                    attrs: { id: "menu0" }
-                  },
-                  [
-                    _c("a", { staticClass: "btn btn-secondary" }, [
-                      _vm._v("10:00")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "btn btn-secondary" }, [
-                      _vm._v("11:00")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "btn btn-secondary" }, [
-                      _vm._v("12:30")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "tab-pane container fade",
-                    attrs: { id: "menu1" }
-                  },
-                  [_vm._v("...")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "tab-pane container fade",
-                    attrs: { id: "menu2" }
-                  },
-                  [_vm._v("...")]
-                )
-              ])
-            ])
-          ])
-        ])
-      ]
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
     )
   }
 ]
@@ -38663,204 +38587,144 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "container", staticStyle: { "margin-top": "70px" } },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-8" }, [
+          _c("div", { staticClass: "main" }, [
+            _c("h2", [_vm._v("Multiplex Theatre Showing Screen 1")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "seatCharts-seat seatCharts-cell focused",
+                attrs: { role: "checkbox" }
+              },
+              [_vm._v("foc")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "seatCharts-seat seatCharts-cell available",
+                attrs: { role: "checkbox" }
+              },
+              [_vm._v("avai")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "seatCharts-seat seatCharts-cell unavailable",
+                attrs: { role: "checkbox" }
+              },
+              [_vm._v("uav")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "seatCharts-seat seatCharts-cell selected",
+                attrs: { role: "checkbox" }
+              },
+              [_vm._v("slc")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "demo" }, [
+              _c("div", { attrs: { id: "seat-map" } }, [
+                _c("div", { staticClass: "seatCharts-container" }, [
+                  _c("div", { staticClass: "front" }, [_vm._v("SCREEN")]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "seatCharts-row" },
+                    _vm._l(this.seats, function(seat) {
+                      return _c(
+                        "div",
+                        {
+                          class:
+                            "seatCharts-seat seatCharts-cell " +
+                            (seat.seat_status.status == 1
+                              ? "unavailable"
+                              : "available"),
+                          attrs: { role: "checkbox" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(seat.name) +
+                              "\n                        "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticStyle: { clear: "both" } })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "container", staticStyle: { "margin-top": "70px" } },
-      [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-8" }, [
-            _c("div", { staticClass: "main" }, [
-              _c("h2", [_vm._v("Multiplex Theatre Showing Screen 1")]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "seatCharts-seat seatCharts-cell focused",
-                  attrs: { role: "checkbox" }
-                },
-                [_vm._v("foc")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "seatCharts-seat seatCharts-cell available",
-                  attrs: { role: "checkbox" }
-                },
-                [_vm._v("avai")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "seatCharts-seat seatCharts-cell unavailable",
-                  attrs: { role: "checkbox" }
-                },
-                [_vm._v("uav")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "seatCharts-seat seatCharts-cell selected",
-                  attrs: { role: "checkbox" }
-                },
-                [_vm._v("slc")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "demo" }, [
-                _c("div", { attrs: { id: "seat-map" } }, [
-                  _c("div", { staticClass: "seatCharts-container" }, [
-                    _c("div", { staticClass: "front" }, [_vm._v("SCREEN")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "seatCharts-row" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "seatCharts-seat seatCharts-cell focused",
-                          attrs: { role: "checkbox" }
-                        },
-                        [_vm._v("foc")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "seatCharts-seat seatCharts-cell available",
-                          attrs: { role: "checkbox" }
-                        },
-                        [_vm._v("avai")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "seatCharts-seat seatCharts-cell unavailable",
-                          attrs: { role: "checkbox" }
-                        },
-                        [_vm._v("uav")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "seatCharts-seat seatCharts-cell selected",
-                          attrs: { role: "checkbox" }
-                        },
-                        [_vm._v("slc")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "seatCharts-row" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "seatCharts-seat seatCharts-cell focused",
-                          attrs: { role: "checkbox" }
-                        },
-                        [_vm._v("foc")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "seatCharts-seat seatCharts-cell available",
-                          attrs: { role: "checkbox" }
-                        },
-                        [_vm._v("avai")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "seatCharts-seat seatCharts-cell unavailable",
-                          attrs: { role: "checkbox" }
-                        },
-                        [_vm._v("uav")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "seatCharts-seat seatCharts-cell selected",
-                          attrs: { role: "checkbox" }
-                        },
-                        [_vm._v("slc")]
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticStyle: { clear: "both" } })
-              ])
-            ])
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("div", { staticClass: "booking-details" }, [
+        _c("ul", { staticClass: "book-left" }, [
+          _c("li", [_vm._v("Movie ")]),
+          _vm._v(" "),
+          _c("li", [_vm._v("Time ")]),
+          _vm._v(" "),
+          _c("li", [_vm._v("Tickets")]),
+          _vm._v(" "),
+          _c("li", [_vm._v("Total")]),
+          _vm._v(" "),
+          _c("li", [_vm._v("Seats :")])
+        ]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "book-right" }, [
+          _c("li", [_vm._v(": Gingerclown")]),
+          _vm._v(" "),
+          _c("li", [_vm._v(": April 3, 21:00")]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(": "),
+            _c("span", { attrs: { id: "counter" } }, [_vm._v("0")])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" }, [
-            _c("div", { staticClass: "booking-details" }, [
-              _c("ul", { staticClass: "book-left" }, [
-                _c("li", [_vm._v("Movie ")]),
-                _vm._v(" "),
-                _c("li", [_vm._v("Time ")]),
-                _vm._v(" "),
-                _c("li", [_vm._v("Tickets")]),
-                _vm._v(" "),
-                _c("li", [_vm._v("Total")]),
-                _vm._v(" "),
-                _c("li", [_vm._v("Seats :")])
-              ]),
-              _vm._v(" "),
-              _c("ul", { staticClass: "book-right" }, [
-                _c("li", [_vm._v(": Gingerclown")]),
-                _vm._v(" "),
-                _c("li", [_vm._v(": April 3, 21:00")]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(": "),
-                  _c("span", { attrs: { id: "counter" } }, [_vm._v("0")])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(": "),
-                  _c("b", [
-                    _c("i", [_vm._v("$")]),
-                    _c("span", { attrs: { id: "total" } }, [_vm._v("0")])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "clear" }),
-              _vm._v(" "),
-              _c("ul", {
-                staticClass: "scrollbar scrollbar1",
-                attrs: { id: "selected-seats" }
-              }),
-              _vm._v(" "),
-              _c("button", { staticClass: "checkout-button" }, [
-                _vm._v("Book Now")
-              ]),
-              _vm._v(" "),
-              _c("div", { attrs: { id: "legend" } })
+          _c("li", [
+            _vm._v(": "),
+            _c("b", [
+              _c("i", [_vm._v("$")]),
+              _c("span", { attrs: { id: "total" } }, [_vm._v("0")])
             ])
           ])
-        ])
-      ]
-    )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "clear" }),
+        _vm._v(" "),
+        _c("ul", {
+          staticClass: "scrollbar scrollbar1",
+          attrs: { id: "selected-seats" }
+        }),
+        _vm._v(" "),
+        _c("button", { staticClass: "checkout-button" }, [_vm._v("Book Now")]),
+        _vm._v(" "),
+        _c("div", { attrs: { id: "legend" } })
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -55707,7 +55571,8 @@ var routes = [{
     path: '/',
     component: _components_bookingcinema_HomeComponent__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
-    path: '/seat',
+    path: '/booking',
+    name: 'booking-movie',
     component: _components_bookingcinema_SeatComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
     path: '/movie/:id',

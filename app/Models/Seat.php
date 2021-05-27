@@ -17,8 +17,4 @@ class Seat extends Model
     public function type() {
         return $this->belongsTo('App\Models\SeatType');
     }
-
-    public function getSeatStatusAttribute() {
-
-    }
 }

@@ -38,7 +38,7 @@ Route::namespace('API')->group(function () {
 
     /* Showtime */
     Route::prefix('showtime')->group(function () {
-        Route::get('/', 'ShowtimeController@showtimes');
+        Route::get('/', 'ShowTimeController@showTimeByMovie');
         Route::get('/{movieId}', 'ShowTimeController@showTimeByMovie');
     });
 });

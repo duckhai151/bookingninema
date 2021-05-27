@@ -4,31 +4,24 @@
 		<div class="col-md-8">
 			<div class="main">
 			<h2>Multiplex Theatre Showing Screen 1</h2>
-			<div role="checkbox" class="seatCharts-seat seatCharts-cell focused">foc</div>	
-			<div role="checkbox" class="seatCharts-seat seatCharts-cell available">avai</div>
-			<div role="checkbox" class="seatCharts-seat seatCharts-cell unavailable">uav</div>	
-			<div role="checkbox" class="seatCharts-seat seatCharts-cell selected">slc</div>	
+			<div role="checkbox" class="seatCharts-seat seatCharts-cell focused">foc</div>
+                <div role="checkbox" class="seatCharts-seat seatCharts-cell available">avai</div>
+			<div role="checkbox" class="seatCharts-seat seatCharts-cell unavailable">uav</div>
+			<div role="checkbox" class="seatCharts-seat seatCharts-cell selected">slc</div>
 			<div class="demo">
 				<div id="seat-map">
 				<div class="seatCharts-container">
-					<div class="front">SCREEN</div>	
+					<div class="front">SCREEN</div>
 					<div class="seatCharts-row">
-						<div role="checkbox" class="seatCharts-seat seatCharts-cell focused">foc</div>	
-						<div role="checkbox" class="seatCharts-seat seatCharts-cell available">avai</div>
-						<div role="checkbox" class="seatCharts-seat seatCharts-cell unavailable">uav</div>	
-						<div role="checkbox" class="seatCharts-seat seatCharts-cell selected">slc</div>	
-					</div>
-					<div class="seatCharts-row">
-						<div role="checkbox" class="seatCharts-seat seatCharts-cell focused">foc</div>	
-						<div role="checkbox" class="seatCharts-seat seatCharts-cell available">avai</div>
-						<div role="checkbox" class="seatCharts-seat seatCharts-cell unavailable">uav</div>	
-						<div role="checkbox" class="seatCharts-seat seatCharts-cell selected">slc</div>	
+						<div v-for="seat in this.seats" role="checkbox" :class="'seatCharts-seat seatCharts-cell ' + ((seat.seat_status.status == 1) ? 'unavailable' : 'available')">
+                            {{ seat.name }}
+                        </div>
 					</div>
 				</div>
 				</div>
-				
+
 				<div style="clear:both"></div>
-			</div>		
+			</div>
 		</div>
 		</div>
 		<div class="col-md-4">
@@ -49,7 +42,7 @@
 				<div class="clear"></div>
 				<ul id="selected-seats" class="scrollbar scrollbar1"></ul>
 
-				<button class="checkout-button">Book Now</button>	
+				<button class="checkout-button">Book Now</button>
 				<div id="legend"></div>
 				</div>
 		</div>
@@ -59,7 +52,28 @@
 
 <script>
 export default {
-
+    data() {
+        return {
+            seats: [],
+        }
+    },
+    created() {
+        console.log(this.$route.params);
+        this.getSeat(this.$route.params.showtimeId, this.$route.params.roomId);
+    },
+    methods: {
+        getSeat(showtimeId, roomId) {
+            axios.get('seat', {
+                params: {
+                    showtimeId: showtimeId,
+                    roomId: roomId,
+                }
+            }).then(res => {
+                console.log(res.data);
+                this.seats = res.data;
+            });
+        }
+    }
 }
 </script>
 
