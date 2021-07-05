@@ -122,8 +122,8 @@ p.copy_rights a:hover{
 }
 div.seatCharts-cell {
 	color: #182C4E;
-    height: 29px;
-    width: 29px;
+    height: 40px;
+    width: 40px;
     line-height: 27px;
     margin: 3px;
     float: left;
@@ -139,6 +139,8 @@ div.seatCharts-seat {
     border-radius: 3px;
 	}
 div.seatCharts-row {
+    margin-left: 100px;
+    margin-right: 100px;
 	height: 35px;
 	}
 div.seatCharts-seat.available {

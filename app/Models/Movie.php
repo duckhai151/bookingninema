@@ -11,8 +11,8 @@ class Movie extends Model
         return $this->belongsToMany('App\Models\Category');
     }
 
-    public function showtimes() {
-        return $this->hasMany('App\Models\Showtime');
+    public function showtime() {
+        return $this->belongsTo('App\Models\Showtime', 'id', 'movie_id');
     }
 
     public static function movies() {

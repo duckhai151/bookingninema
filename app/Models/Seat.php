@@ -15,6 +15,10 @@ class Seat extends Model
     }
 
     public function type() {
-        return $this->belongsTo('App\Models\SeatType');
+        return $this->hasOne('App\Models\SeatType', 'id', 'seat_type_id')->with('price');
+    }
+
+    public function price() {
+        return $this->type()->price();
     }
 }

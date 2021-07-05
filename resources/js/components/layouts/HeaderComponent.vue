@@ -8,7 +8,7 @@
 				<h1><a class="navbar-brand" href="index.html"><span class="fa fa-play icon-log"
 							aria-hidden="true"></span>
 						Cinema </a></h1>
-				<!-- if logo is image enable this   
+				<!-- if logo is image enable this
 						<a class="navbar-brand" href="#index.html">
 							<img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
 						</a> -->
@@ -24,25 +24,20 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active">
 							<!-- <a class="nav-link" href="index.html">Home</a> -->
-							<router-link class="nav-link" to="/">Home</router-link>
+							<router-link class="nav-link" to="/">Trang chủ</router-link>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="about.html">About</a>
+							<a class="nav-link" href="about.html">Về chúng tôi</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="genre.html">Genre</a>
-						</li>
-
-						<li class="nav-item">
-							<!-- <a class="nav-link" href="contact.html">Contact</a> -->
-							<router-link class="nav-link" to="/seat">Go to Foo</router-link>
+                            <router-link tag="a" class="nav-link" to="/login">Đăng nhập</router-link>
 						</li>
 					</ul>
 
 					<!--/search-right-->
 					<!--/search-right-->
 					<div class="search-right">
-						<a href="#search" class="btn search-hny mr-lg-3 mt-lg-0 mt-4" title="search">Search <span
+						<a href="#search" class="btn search-hny mr-lg-3 mt-lg-0 mt-4" title="search">Tìm kiếm <span
 								class="fa fa-search ml-3" aria-hidden="true"></span></a>
 						<!-- search popup -->
 						<div id="search" class="pop-overlay">

@@ -35,6 +35,7 @@ class SeatRepository extends BaseRepository implements SeatRepositoryInterface
                     ->whereHas('seatStatus', function ($query) use ($showtimeId) {
                         $query->where('showtime_id', $showtimeId);
                     })->with('seatStatus')
+                    ->with('type')
                     ->get();
         return $seats;
     }

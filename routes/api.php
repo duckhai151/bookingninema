@@ -39,7 +39,14 @@ Route::namespace('API')->group(function () {
     /* Showtime */
     Route::prefix('showtime')->group(function () {
         Route::get('/', 'ShowTimeController@showTimeByMovie');
-        Route::get('/{movieId}', 'ShowTimeController@showTimeByMovie');
+        Route::get('/{showtimeId}', 'ShowTimeController@showtime');
+    });
+
+    Route::post('register', 'AuthController@register');
+    Route::post('login', 'AuthController@login');
+    Route::group(['middleware' => 'jwt.auth'], function () {
+        Route::get('auth', 'AuthController@user');
+        Route::post('logout', 'AuthController@logout');
     });
 });
 

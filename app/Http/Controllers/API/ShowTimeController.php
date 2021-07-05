@@ -15,6 +15,23 @@ class ShowTimeController extends ApiController
         $this->showTimeRepository = $showTimeRepository;
     }
 
+    public function index()
+    {
+        return view('admin.showtime.index');
+    }
+
+    public function create()
+    {
+        return view('admin.showtime.create');
+    }
+
+    public function showtime($showtimeId) {
+        $showtime = $this->showTimeRepository->showtime($showtimeId);
+        return array_merge(self::success(), [
+            'showtime' => $showtime,
+        ]);
+    }
+
     public function showTimeByMovie(Request $request) {
         return $this->showTimeRepository->showTimeByMovie($request->movieId);
     }

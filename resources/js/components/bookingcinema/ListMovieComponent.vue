@@ -16,11 +16,6 @@
 									PHIM ĐANG CHIẾU
 								</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
-									SUẤT CHIẾU ĐẶC BIỆT
-								</a>
-							</li>
 						</ul>
 					</div>
 				</div>
@@ -29,17 +24,18 @@
 						<div class="box16">
                             <router-link :to="{ name: 'detail-movie', params: { id: movie.id }}">
                                 <figure>
-                                    <img class="img-fluid" src="cinema/images/m4.jpg" alt="">
+                                    <img v-if="movie.image != ''" class="img-fluid" :src="'cinema/movies/' + movie.image" alt="">
+                                    <img v-else class="img-fluid" src="cinema/movies/default.jpg" alt="">
                                 </figure>
 
                                 <span class="fa fa-play video-icon" aria-hidden="true"></span>
                             </router-link>
 						</div>
-						<h3> <a href="genre.html">{{ movie.name }}</a></h3>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Time:</span> {{ movie.running_time }}</p>
-						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Category:</span> Action</p>
+                        <h3><router-link :to="{ name: 'detail-movie', params: { id: movie.id }}">{{ movie.name }}</router-link></h3>
+						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Thời gian:</span> {{ movie.running_time }} phút</p>
+						<p style="font-size: 15px;"><span style="font-weight: bold; color: black;">Thể loại:</span> Hành động</p>
 						<div class="button-center text-center mt-4">
-							<a href="genre.html" v-on:click="getShowtime(movie.id)" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Booking Now</a>
+							<a href="genre.html" v-on:click="getShowtime(movie.id)" class="btn btn-info watch-button" data-toggle="modal" data-target=".bd-example-modal-lg">Đặt vé ngay</a>
 						</div>
 					</div>
 				</div>
@@ -73,10 +69,26 @@
                     </ul>
                     <div class="tab-content">
                         <div v-for="(showtime, name, index) in this.showtimes" v-if="index == 0" class="tab-pane container active" :id="'menu'+index">
-                            <router-link v-for="show in showtime" :to="{name: 'booking-movie', params: { showtimeId: show.id, roomId: show.room_id }}" data-dismiss="modal" tag="a" class="btn btn-secondary">{{ show.time_showtime }}</router-link>
+                            <router-link v-for="show in showtime" v-bind:key="show.id"
+                                         :to="{name: 'booking-movie',
+                                         params: {
+                                             showtimeId: show.id,
+                                             roomId: show.room_id,
+                                             movieId: show.movie_id,
+                                         }}"
+                                         data-dismiss="modal" tag="a" class="btn btn-secondary">{{ show.time_showtime }}
+                            </router-link>
                         </div>
                         <div v-else class="tab-pane container fade" :id="'menu'+index">
-                            <router-link v-for="show in showtime" :to="{name: 'booking-movie', params: { showtimeId: show.id, roomId: show.room_id }}" data-dismiss="modal" tag="a" class="btn btn-secondary">{{ show.time_showtime }}</router-link>
+                            <router-link v-for="show in showtime" v-bind:key="show.id"
+                                         :to="{name: 'booking-movie',
+                                         params: {
+                                             showtimeId: show.id,
+                                             roomId: show.room_id,
+                                             movieId: show.movie_id,
+                                         }}"
+                                         data-dismiss="modal" tag="a" class="btn btn-secondary">{{ show.time_showtime }}
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -98,6 +110,7 @@ export default {
     },
     created() {
         this.listMovie();
+        this.getAuth();
     },
     methods: {
         listMovie() {
@@ -116,9 +129,14 @@ export default {
                 this.showtimes = res.data;
             });
         },
-        redirectBooking(showtimeId) {
-            console.log('abc');
-            // this.$router.push({path: '/booking'});
+        getAuth() {
+            axios.get('auth', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                }
+            }).then(res => {
+                console.log(res.data);
+            });
         }
     },
 }

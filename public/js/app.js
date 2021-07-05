@@ -1899,6 +1899,68 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/bookingcinema/ConfirmComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/bookingcinema/ConfirmComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "BookingComponent"
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/bookingcinema/DetailMovieComponent.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/bookingcinema/DetailMovieComponent.vue?vue&type=script&lang=js& ***!
@@ -2072,6 +2134,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2082,6 +2156,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.listMovie();
+    this.getAuth();
   },
   methods: {
     listMovie: function listMovie() {
@@ -2106,8 +2181,280 @@ __webpack_require__.r(__webpack_exports__);
         _this2.showtimes = res.data;
       });
     },
-    redirectBooking: function redirectBooking(showtimeId) {
-      console.log('abc'); // this.$router.push({path: '/booking'});
+    getAuth: function getAuth() {
+      axios.get('auth', {
+        headers: {
+          'Authorization': "Bearer ".concat(localStorage.getItem("token"))
+        }
+      }).then(function (res) {
+        console.log(res.data);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/bookingcinema/LoginComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/bookingcinema/LoginComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "LoginComponent",
+  data: function data() {
+    return {
+      email: '',
+      password: ''
+    };
+  },
+  methods: {
+    login: function login() {
+      var _this = this;
+
+      axios.post('login', {
+        email: this.email,
+        password: this.password
+      }).then(function (res) {
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", res.data.user);
+
+        _this.$router.push({
+          path: '/'
+        });
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/bookingcinema/RegisterComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/bookingcinema/RegisterComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "RegisterComponent",
+  data: function data() {
+    return {
+      email: '',
+      password: '',
+      name: '',
+      sex: '',
+      address: '',
+      birthday: '',
+      phone: ''
+    };
+  },
+  methods: {
+    register: function register() {
+      var _this = this;
+
+      axios.post('register', {
+        email: this.email,
+        password: this.password,
+        name: this.name,
+        sex: this.sex,
+        address: this.address,
+        birthday: this.birthday,
+        phone: this.phone
+      }).then(function (res) {
+        console.log(res.data);
+
+        _this.$router.push({
+          path: '/login'
+        });
+      });
     }
   }
 });
@@ -2174,15 +2521,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      seats: []
+      seats: [],
+      price: 0,
+      movie: '',
+      showtime: '',
+      listSeatChose: [],
+      listSeatName: []
     };
   },
   created: function created() {
-    console.log(this.$route.params);
+    this.getShowtime(this.$route.params.showtimeId);
+    this.getMovie(this.$route.params.movieId);
     this.getSeat(this.$route.params.showtimeId, this.$route.params.roomId);
   },
   methods: {
@@ -2195,8 +2547,69 @@ __webpack_require__.r(__webpack_exports__);
           roomId: roomId
         }
       }).then(function (res) {
-        console.log(res.data);
         _this.seats = res.data;
+        console.log(_this.seats);
+      });
+    },
+    getMovie: function getMovie(movieId) {
+      var _this2 = this;
+
+      axios.get("movie/".concat(movieId)).then(function (res) {
+        _this2.movie = res.data.movie;
+      });
+    },
+    getShowtime: function getShowtime(showtimeId) {
+      var _this3 = this;
+
+      axios.get("showtime/".concat(showtimeId)).then(function (res) {
+        _this3.showtime = res.data.showtime;
+      });
+    },
+    choseSeat: function choseSeat(seatIndex) {
+      var status = this.seats[seatIndex].seat_status.status;
+
+      if (status == 0) {
+        this.seats[seatIndex].seat_status.status = 2;
+        this.listSeatChose.push(this.seats[seatIndex].id);
+        this.listSeatName.push(this.seats[seatIndex].name);
+        this.price += this.seats[seatIndex].type.price.price;
+      } else if (status == 2) {
+        this.seats[seatIndex].seat_status.status = 0;
+        var index = this.listSeatChose.indexOf(this.seats[seatIndex].id);
+
+        if (index > -1) {
+          this.listSeatChose.splice(index, 1);
+          this.listSeatName.splice(index, 1);
+          this.price -= this.seats[seatIndex].type.price.price;
+        }
+      }
+    },
+    getStatusSeat: function getStatusSeat(seatIndex) {
+      var status = this.seats[seatIndex].seat_status.status;
+
+      switch (status) {
+        case 0:
+          return 'available';
+
+        case 1:
+          return 'unavailable';
+
+        case 2:
+          return 'selected';
+      }
+    },
+    bookCinema: function bookCinema() {
+      var listBooking = {
+        'seat': this.listSeatChose,
+        'movieName': this.movie.name,
+        'date': this.showtime.date_showtime,
+        'time': this.showtime.time_showtime
+      };
+      localStorage.setItem("listBooking", JSON.stringify(listBooking));
+      var test = JSON.parse(localStorage.getItem('listBooking'));
+      console.log(test);
+      this.$router.push({
+        path: '/confirm'
       });
     }
   }
@@ -2404,11 +2817,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
 //
 //
 //
@@ -38113,6 +38521,108 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/bookingcinema/ConfirmComponent.vue?vue&type=template&id=137fcd2d&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/bookingcinema/ConfirmComponent.vue?vue&type=template&id=137fcd2d&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "container", staticStyle: { "margin-top": "70px" } },
+      [
+        _c("h2", [_vm._v("Đặt vé")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "booking-details" }, [
+              _c("ul", { staticClass: "book-left" }, [
+                _c("li", [_vm._v("Họ và tên ")]),
+                _vm._v(" "),
+                _c("li", [_vm._v("Số điện thoại ")]),
+                _vm._v(" "),
+                _c("li", [_vm._v("Email ")])
+              ]),
+              _vm._v(" "),
+              _c("ul", { staticClass: "book-right" }, [
+                _c("li", [_vm._v(": Nguyễn Đức Khải")]),
+                _vm._v(" "),
+                _c("li", [_vm._v(": 0123456789")]),
+                _vm._v(" "),
+                _c("li", [_vm._v(": duckhai151@gmail.com")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "clear" }),
+              _vm._v(" "),
+              _c("div", { attrs: { id: "legend" } })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "booking-details" }, [
+              _c("ul", { staticClass: "book-left" }, [
+                _c("li", [_vm._v("Phim ")]),
+                _vm._v(" "),
+                _c("li", [_vm._v("Thời gian ")]),
+                _vm._v(" "),
+                _c("li", [_vm._v("Giờ chiếu ")]),
+                _vm._v(" "),
+                _c("li", [_vm._v("Ngày chiếu ")]),
+                _vm._v(" "),
+                _c("li", [_vm._v("Ghế đã chọn")]),
+                _vm._v(" "),
+                _c("li", [_vm._v("Tổng tiền")])
+              ]),
+              _vm._v(" "),
+              _c("ul", { staticClass: "book-right" }, [
+                _c("li", [_vm._v(": Ròm")]),
+                _vm._v(" "),
+                _c("li", [_vm._v(": 90")]),
+                _vm._v(" "),
+                _c("li", [_vm._v(": 20:00")]),
+                _vm._v(" "),
+                _c("li", [_vm._v(": 19/5")]),
+                _vm._v(" "),
+                _c("li", [_vm._v(": A4, A5")]),
+                _vm._v(" "),
+                _c("li", [_vm._v(": 120000")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "clear" }),
+              _vm._v(" "),
+              _c("ul", {
+                staticClass: "scrollbar scrollbar1",
+                attrs: { id: "selected-seats" }
+              })
+            ])
+          ])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/bookingcinema/DetailMovieComponent.vue?vue&type=template&id=2b0a30ee&scoped=true&":
 /*!*************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/bookingcinema/DetailMovieComponent.vue?vue&type=template&id=2b0a30ee&scoped=true& ***!
@@ -38220,10 +38730,21 @@ var render = function() {
                     },
                     [
                       _c("figure", [
-                        _c("img", {
-                          staticClass: "img-fluid",
-                          attrs: { src: "cinema/images/m4.jpg", alt: "" }
-                        })
+                        movie.image != ""
+                          ? _c("img", {
+                              staticClass: "img-fluid",
+                              attrs: {
+                                src: "cinema/movies/" + movie.image,
+                                alt: ""
+                              }
+                            })
+                          : _c("img", {
+                              staticClass: "img-fluid",
+                              attrs: {
+                                src: "cinema/movies/default.jpg",
+                                alt: ""
+                              }
+                            })
                       ]),
                       _vm._v(" "),
                       _c("span", {
@@ -38236,19 +38757,29 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c("h3", [
-                _c("a", { attrs: { href: "genre.html" } }, [
-                  _vm._v(_vm._s(movie.name))
-                ])
-              ]),
+              _c(
+                "h3",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      attrs: {
+                        to: { name: "detail-movie", params: { id: movie.id } }
+                      }
+                    },
+                    [_vm._v(_vm._s(movie.name))]
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
               _c("p", { staticStyle: { "font-size": "15px" } }, [
                 _c(
                   "span",
                   { staticStyle: { "font-weight": "bold", color: "black" } },
-                  [_vm._v("Time:")]
+                  [_vm._v("Thời gian:")]
                 ),
-                _vm._v(" " + _vm._s(movie.running_time))
+                _vm._v(" " + _vm._s(movie.running_time) + " phút")
               ]),
               _vm._v(" "),
               _vm._m(1, true),
@@ -38269,7 +38800,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Booking Now")]
+                  [_vm._v("Đặt vé ngay")]
                 )
               ])
             ])
@@ -38380,20 +38911,27 @@ var render = function() {
                           return _c(
                             "router-link",
                             {
+                              key: show.id,
                               staticClass: "btn btn-secondary",
                               attrs: {
                                 to: {
                                   name: "booking-movie",
                                   params: {
                                     showtimeId: show.id,
-                                    roomId: show.room_id
+                                    roomId: show.room_id,
+                                    movieId: show.movie_id
                                   }
                                 },
                                 "data-dismiss": "modal",
                                 tag: "a"
                               }
                             },
-                            [_vm._v(_vm._s(show.time_showtime))]
+                            [
+                              _vm._v(
+                                _vm._s(show.time_showtime) +
+                                  "\n                            "
+                              )
+                            ]
                           )
                         }),
                         1
@@ -38408,20 +38946,27 @@ var render = function() {
                           return _c(
                             "router-link",
                             {
+                              key: show.id,
                               staticClass: "btn btn-secondary",
                               attrs: {
                                 to: {
                                   name: "booking-movie",
                                   params: {
                                     showtimeId: show.id,
-                                    roomId: show.room_id
+                                    roomId: show.room_id,
+                                    movieId: show.movie_id
                                   }
                                 },
                                 "data-dismiss": "modal",
                                 tag: "a"
                               }
                             },
-                            [_vm._v(_vm._s(show.time_showtime))]
+                            [
+                              _vm._v(
+                                _vm._s(show.time_showtime) +
+                                  "\n                            "
+                              )
+                            ]
                           )
                         }),
                         1
@@ -38488,28 +39033,6 @@ var staticRenderFns = [
                   )
                 ]
               )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "nav-item" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "nav-link",
-                  attrs: {
-                    id: "contact-tab",
-                    "data-toggle": "tab",
-                    href: "#contact",
-                    role: "tab",
-                    "aria-controls": "contact",
-                    "aria-selected": "false"
-                  }
-                },
-                [
-                  _vm._v(
-                    "\n\t\t\t\t\t\t\t\t\tSUẤT CHIẾU ĐẶC BIỆT\n\t\t\t\t\t\t\t\t"
-                  )
-                ]
-              )
             ])
           ]
         )
@@ -38522,9 +39045,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("p", { staticStyle: { "font-size": "15px" } }, [
       _c("span", { staticStyle: { "font-weight": "bold", color: "black" } }, [
-        _vm._v("Category:")
+        _vm._v("Thể loại:")
       ]),
-      _vm._v(" Action")
+      _vm._v(" Hành động")
     ])
   },
   function() {
@@ -38572,6 +39095,606 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/bookingcinema/LoginComponent.vue?vue&type=template&id=3f563d24&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/bookingcinema/LoginComponent.vue?vue&type=template&id=3f563d24&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row py-5 mt-4 align-items-center" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-7" }, [
+        _c("form", { attrs: { action: "#" } }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "input-group col-lg-12 mb-4" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.email,
+                    expression: "email"
+                  }
+                ],
+                staticClass: "form-control bg-white border-left-0 border-md",
+                attrs: {
+                  id: "email",
+                  type: "email",
+                  name: "email",
+                  placeholder: "Email Address"
+                },
+                domProps: { value: _vm.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.email = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group col-lg-12 mb-4" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.password,
+                    expression: "password"
+                  }
+                ],
+                staticClass: "form-control bg-white border-left-0 border-md",
+                attrs: {
+                  id: "password",
+                  type: "password",
+                  name: "password",
+                  placeholder: "Password"
+                },
+                domProps: { value: _vm.password },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.password = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-lg-12 mx-auto mb-0" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-primary btn-block py-2",
+                  on: {
+                    click: function($event) {
+                      return _vm.login()
+                    }
+                  }
+                },
+                [
+                  _c("span", { staticClass: "font-weight-bold" }, [
+                    _vm._v("Đăng nhập")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-center w-100" }, [
+              _c(
+                "p",
+                { staticClass: "text-muted font-weight-bold" },
+                [
+                  _vm._v("Bạn chưa có tài khoản? "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "text-primary ml-2",
+                      attrs: { tag: "a", to: { name: "register" } }
+                    },
+                    [_vm._v("Đăng kí")]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-5" }, [
+      _c("img", {
+        staticClass: "img-fluid mb-3 d-none d-md-block",
+        attrs: {
+          src:
+            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dasym.com%2Ffuture-cinema-experience%2F&psig=AOvVaw3cf3Q100U3_HRaHHLNKH5L&ust=1622218296969000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKiAkZ6g6vACFQAAAAAdAAAAABAD",
+          alt: ""
+        }
+      }),
+      _vm._v(" "),
+      _c("h1", [_vm._v("Đăng nhập")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "span",
+        {
+          staticClass: "input-group-text bg-white px-4 border-md border-right-0"
+        },
+        [_c("i", { staticClass: "fa fa-envelope text-muted" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "span",
+        {
+          staticClass: "input-group-text bg-white px-4 border-md border-right-0"
+        },
+        [_c("i", { staticClass: "fa fa-lock text-muted" })]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/bookingcinema/RegisterComponent.vue?vue&type=template&id=2649f18c&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/bookingcinema/RegisterComponent.vue?vue&type=template&id=2649f18c&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row py-5 mt-4 align-items-center" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-7 col-lg-6 ml-auto" }, [
+        _c("form", { attrs: { action: "#" } }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "input-group col-lg-12 mb-4" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.email,
+                    expression: "email"
+                  }
+                ],
+                staticClass: "form-control bg-white border-left-0 border-md",
+                attrs: {
+                  id: "email",
+                  type: "email",
+                  name: "email",
+                  placeholder: "Địa chỉ Email"
+                },
+                domProps: { value: _vm.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.email = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group col-lg-12 mb-4" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.password,
+                    expression: "password"
+                  }
+                ],
+                staticClass: "form-control bg-white border-left-0 border-md",
+                attrs: {
+                  id: "password",
+                  type: "password",
+                  name: "password",
+                  placeholder: "Mật khẩu"
+                },
+                domProps: { value: _vm.password },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.password = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group col-lg-12 mb-4" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.name,
+                    expression: "name"
+                  }
+                ],
+                staticClass: "form-control bg-white border-left-0 border-md",
+                attrs: {
+                  id: "name",
+                  type: "text",
+                  name: "name",
+                  placeholder: "Họ và tên"
+                },
+                domProps: { value: _vm.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.name = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group col-lg-12 mb-4" }, [
+              _vm._m(4),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.sex,
+                      expression: "sex"
+                    }
+                  ],
+                  staticClass:
+                    "form-control custom-select bg-white border-left-0 border-md",
+                  attrs: { id: "job", name: "jobtitle" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.sex = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [
+                    _vm._v("Chọn giới tính")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Nam" } }, [_vm._v("Nam")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Nữ" } }, [_vm._v("Nữ")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group col-lg-12 mb-4" }, [
+              _vm._m(5),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.address,
+                    expression: "address"
+                  }
+                ],
+                staticClass: "form-control bg-white border-left-0 border-md",
+                attrs: {
+                  id: "address",
+                  type: "text",
+                  name: "address",
+                  placeholder: "Địa chỉ"
+                },
+                domProps: { value: _vm.address },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.address = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group col-lg-12 mb-4" }, [
+              _vm._m(6),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.birthday,
+                    expression: "birthday"
+                  }
+                ],
+                staticClass: "form-control bg-white border-left-0 border-md",
+                attrs: {
+                  id: "birthday",
+                  type: "date",
+                  name: "birthday",
+                  placeholder: "Ngày sinh"
+                },
+                domProps: { value: _vm.birthday },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.birthday = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group col-lg-12 mb-4" }, [
+              _vm._m(7),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.phone,
+                    expression: "phone"
+                  }
+                ],
+                staticClass:
+                  "form-control bg-white border-md border-left-0 pl-3",
+                attrs: {
+                  id: "phoneNumber",
+                  type: "tel",
+                  name: "phone",
+                  placeholder: "Số điện thoại"
+                },
+                domProps: { value: _vm.phone },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.phone = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(".\n\n                        "),
+            _c("div", { staticClass: "form-group col-lg-12 mx-auto mb-0" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-primary btn-block py-2",
+                  on: {
+                    click: function($event) {
+                      return _vm.register()
+                    }
+                  }
+                },
+                [
+                  _c("span", { staticClass: "font-weight-bold" }, [
+                    _vm._v("Đăng kí")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-center w-100" }, [
+              _c(
+                "p",
+                { staticClass: "text-muted font-weight-bold" },
+                [
+                  _vm._v("Bạn đã có tài khoản ? "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "text-primary ml-2",
+                      attrs: { tag: "a", to: { name: "login" } }
+                    },
+                    [_vm._v("Đăng nhập")]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-5 pr-lg-5 mb-5 mb-md-0" }, [
+      _c("img", {
+        staticClass: "img-fluid mb-3 d-none d-md-block",
+        attrs: {
+          src:
+            "https://res.cloudinary.com/mhmd/image/upload/v1569543678/form_d9sh6m.svg",
+          alt: ""
+        }
+      }),
+      _vm._v(" "),
+      _c("h1", [_vm._v("Đăng kí Tài khoản")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "span",
+        {
+          staticClass: "input-group-text bg-white px-4 border-md border-right-0"
+        },
+        [_c("i", { staticClass: "fa fa-envelope text-muted" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "span",
+        {
+          staticClass: "input-group-text bg-white px-4 border-md border-right-0"
+        },
+        [_c("i", { staticClass: "fa fa-lock text-muted" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "span",
+        {
+          staticClass: "input-group-text bg-white px-4 border-md border-right-0"
+        },
+        [_c("i", { staticClass: "fa fa-user text-muted" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "span",
+        {
+          staticClass: "input-group-text bg-white px-4 border-md border-right-0"
+        },
+        [_c("i", { staticClass: "fa fa-black-tie text-muted" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "span",
+        {
+          staticClass: "input-group-text bg-white px-4 border-md border-right-0"
+        },
+        [_c("i", { staticClass: "fa fa-user text-muted" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "span",
+        {
+          staticClass: "input-group-text bg-white px-4 border-md border-right-0"
+        },
+        [_c("i", { staticClass: "fa fa-user text-muted" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "span",
+        {
+          staticClass: "input-group-text bg-white px-4 border-md border-right-0"
+        },
+        [_c("i", { staticClass: "fa fa-phone-square text-muted" })]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/bookingcinema/SeatComponent.vue?vue&type=template&id=7fe23b18&":
 /*!******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/bookingcinema/SeatComponent.vue?vue&type=template&id=7fe23b18& ***!
@@ -38594,68 +39717,32 @@ var render = function() {
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-8" }, [
           _c("div", { staticClass: "main" }, [
-            _c("h2", [_vm._v("Multiplex Theatre Showing Screen 1")]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "seatCharts-seat seatCharts-cell focused",
-                attrs: { role: "checkbox" }
-              },
-              [_vm._v("foc")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "seatCharts-seat seatCharts-cell available",
-                attrs: { role: "checkbox" }
-              },
-              [_vm._v("avai")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "seatCharts-seat seatCharts-cell unavailable",
-                attrs: { role: "checkbox" }
-              },
-              [_vm._v("uav")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "seatCharts-seat seatCharts-cell selected",
-                attrs: { role: "checkbox" }
-              },
-              [_vm._v("slc")]
-            ),
+            _c("h2"),
             _vm._v(" "),
             _c("div", { staticClass: "demo" }, [
               _c("div", { attrs: { id: "seat-map" } }, [
                 _c("div", { staticClass: "seatCharts-container" }, [
-                  _c("div", { staticClass: "front" }, [_vm._v("SCREEN")]),
+                  _c("div", { staticClass: "front" }, [_vm._v("MÀN HÌNH")]),
                   _vm._v(" "),
                   _c(
                     "div",
                     { staticClass: "seatCharts-row" },
-                    _vm._l(this.seats, function(seat) {
+                    _vm._l(this.seats, function(seat, index) {
                       return _c(
                         "div",
                         {
-                          class:
-                            "seatCharts-seat seatCharts-cell " +
-                            (seat.seat_status.status == 1
-                              ? "unavailable"
-                              : "available"),
-                          attrs: { role: "checkbox" }
+                          staticClass: "seatCharts-seat seatCharts-cell",
+                          class: _vm.getStatusSeat(index),
+                          attrs: { role: "checkbox" },
+                          on: {
+                            click: function($event) {
+                              return _vm.choseSeat(index)
+                            }
+                          }
                         },
                         [
                           _vm._v(
-                            "\n                            " +
-                              _vm._s(seat.name) +
-                              "\n                        "
+                            _vm._s(seat.name) + "\n                        "
                           )
                         ]
                       )
@@ -38670,7 +39757,55 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", { staticClass: "col-md-4" }, [
+          _c("div", { staticClass: "booking-details" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("ul", { staticClass: "book-right" }, [
+              _c("li", [_vm._v(": " + _vm._s(this.movie.name))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(": " + _vm._s(this.movie.running_time))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(": " + _vm._s(this.showtime.time_showtime))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(": " + _vm._s(this.showtime.date_showtime))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(": " + _vm._s(this.listSeatName.join(", ")))]),
+              _vm._v(" "),
+              _c("li", [
+                _vm._v(": "),
+                _c("b", [
+                  _c("span", { attrs: { id: "total" } }, [
+                    _vm._v(_vm._s(this.price))
+                  ]),
+                  _vm._v(" VNĐ")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "clear" }),
+            _vm._v(" "),
+            _c("ul", {
+              staticClass: "scrollbar scrollbar1",
+              attrs: { id: "selected-seats" }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "checkout-button",
+                on: {
+                  click: function($event) {
+                    return _vm.bookCinema()
+                  }
+                }
+              },
+              [_vm._v("Đặt ngay")]
+            ),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "legend" } })
+          ])
+        ])
       ])
     ]
   )
@@ -38680,50 +39815,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c("div", { staticClass: "booking-details" }, [
-        _c("ul", { staticClass: "book-left" }, [
-          _c("li", [_vm._v("Movie ")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("Time ")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("Tickets")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("Total")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("Seats :")])
-        ]),
-        _vm._v(" "),
-        _c("ul", { staticClass: "book-right" }, [
-          _c("li", [_vm._v(": Gingerclown")]),
-          _vm._v(" "),
-          _c("li", [_vm._v(": April 3, 21:00")]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(": "),
-            _c("span", { attrs: { id: "counter" } }, [_vm._v("0")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _vm._v(": "),
-            _c("b", [
-              _c("i", [_vm._v("$")]),
-              _c("span", { attrs: { id: "total" } }, [_vm._v("0")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "clear" }),
-        _vm._v(" "),
-        _c("ul", {
-          staticClass: "scrollbar scrollbar1",
-          attrs: { id: "selected-seats" }
-        }),
-        _vm._v(" "),
-        _c("button", { staticClass: "checkout-button" }, [_vm._v("Book Now")]),
-        _vm._v(" "),
-        _c("div", { attrs: { id: "legend" } })
-      ])
+    return _c("ul", { staticClass: "book-left" }, [
+      _c("li", [_vm._v("Phim ")]),
+      _vm._v(" "),
+      _c("li", [_vm._v("Thời gian ")]),
+      _vm._v(" "),
+      _c("li", [_vm._v("Giờ chiếu ")]),
+      _vm._v(" "),
+      _c("li", [_vm._v("Ngày chiếu ")]),
+      _vm._v(" "),
+      _c("li", [_vm._v("Ghế đã chọn")]),
+      _vm._v(" "),
+      _c("li", [_vm._v("Tổng tiền")])
     ])
   }
 ]
@@ -39332,7 +40435,7 @@ var render = function() {
                         _c(
                           "router-link",
                           { staticClass: "nav-link", attrs: { to: "/" } },
-                          [_vm._v("Home")]
+                          [_vm._v("Trang chủ")]
                         )
                       ],
                       1
@@ -39340,23 +40443,24 @@ var render = function() {
                     _vm._v(" "),
                     _vm._m(2),
                     _vm._v(" "),
-                    _vm._m(3),
-                    _vm._v(" "),
                     _c(
                       "li",
                       { staticClass: "nav-item" },
                       [
                         _c(
                           "router-link",
-                          { staticClass: "nav-link", attrs: { to: "/seat" } },
-                          [_vm._v("Go to Foo")]
+                          {
+                            staticClass: "nav-link",
+                            attrs: { tag: "a", to: "/login" }
+                          },
+                          [_vm._v("Đăng nhập")]
                         )
                       ],
                       1
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(4)
+                  _vm._m(3)
                 ]
               )
             ])
@@ -39411,17 +40515,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "nav-item" }, [
       _c("a", { staticClass: "nav-link", attrs: { href: "about.html" } }, [
-        _vm._v("About")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "genre.html" } }, [
-        _vm._v("Genre")
+        _vm._v("Về chúng tôi")
       ])
     ])
   },
@@ -39437,7 +40531,7 @@ var staticRenderFns = [
           attrs: { href: "#search", title: "search" }
         },
         [
-          _vm._v("Search "),
+          _vm._v("Tìm kiếm "),
           _c("span", {
             staticClass: "fa fa-search ml-3",
             attrs: { "aria-hidden": "true" }
@@ -54920,6 +56014,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/components/bookingcinema/ConfirmComponent.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/bookingcinema/ConfirmComponent.vue ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ConfirmComponent_vue_vue_type_template_id_137fcd2d_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConfirmComponent.vue?vue&type=template&id=137fcd2d&scoped=true& */ "./resources/js/components/bookingcinema/ConfirmComponent.vue?vue&type=template&id=137fcd2d&scoped=true&");
+/* harmony import */ var _ConfirmComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConfirmComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/bookingcinema/ConfirmComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ConfirmComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ConfirmComponent_vue_vue_type_template_id_137fcd2d_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ConfirmComponent_vue_vue_type_template_id_137fcd2d_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "137fcd2d",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/bookingcinema/ConfirmComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/bookingcinema/ConfirmComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/bookingcinema/ConfirmComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfirmComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ConfirmComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/bookingcinema/ConfirmComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfirmComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/bookingcinema/ConfirmComponent.vue?vue&type=template&id=137fcd2d&scoped=true&":
+/*!***************************************************************************************************************!*\
+  !*** ./resources/js/components/bookingcinema/ConfirmComponent.vue?vue&type=template&id=137fcd2d&scoped=true& ***!
+  \***************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfirmComponent_vue_vue_type_template_id_137fcd2d_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ConfirmComponent.vue?vue&type=template&id=137fcd2d&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/bookingcinema/ConfirmComponent.vue?vue&type=template&id=137fcd2d&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfirmComponent_vue_vue_type_template_id_137fcd2d_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfirmComponent_vue_vue_type_template_id_137fcd2d_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/bookingcinema/DetailMovieComponent.vue":
 /*!************************************************************************!*\
   !*** ./resources/js/components/bookingcinema/DetailMovieComponent.vue ***!
@@ -55122,6 +56285,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListMovieComponent_vue_vue_type_template_id_1b318dfb___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListMovieComponent_vue_vue_type_template_id_1b318dfb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/bookingcinema/LoginComponent.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/bookingcinema/LoginComponent.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LoginComponent_vue_vue_type_template_id_3f563d24_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LoginComponent.vue?vue&type=template&id=3f563d24&scoped=true& */ "./resources/js/components/bookingcinema/LoginComponent.vue?vue&type=template&id=3f563d24&scoped=true&");
+/* harmony import */ var _LoginComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoginComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/bookingcinema/LoginComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _LoginComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _LoginComponent_vue_vue_type_template_id_3f563d24_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _LoginComponent_vue_vue_type_template_id_3f563d24_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "3f563d24",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/bookingcinema/LoginComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/bookingcinema/LoginComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/bookingcinema/LoginComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./LoginComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/bookingcinema/LoginComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/bookingcinema/LoginComponent.vue?vue&type=template&id=3f563d24&scoped=true&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/components/bookingcinema/LoginComponent.vue?vue&type=template&id=3f563d24&scoped=true& ***!
+  \*************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginComponent_vue_vue_type_template_id_3f563d24_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./LoginComponent.vue?vue&type=template&id=3f563d24&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/bookingcinema/LoginComponent.vue?vue&type=template&id=3f563d24&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginComponent_vue_vue_type_template_id_3f563d24_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginComponent_vue_vue_type_template_id_3f563d24_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/bookingcinema/RegisterComponent.vue":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/bookingcinema/RegisterComponent.vue ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _RegisterComponent_vue_vue_type_template_id_2649f18c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RegisterComponent.vue?vue&type=template&id=2649f18c&scoped=true& */ "./resources/js/components/bookingcinema/RegisterComponent.vue?vue&type=template&id=2649f18c&scoped=true&");
+/* harmony import */ var _RegisterComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RegisterComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/bookingcinema/RegisterComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RegisterComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RegisterComponent_vue_vue_type_template_id_2649f18c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RegisterComponent_vue_vue_type_template_id_2649f18c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "2649f18c",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/bookingcinema/RegisterComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/bookingcinema/RegisterComponent.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/bookingcinema/RegisterComponent.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./RegisterComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/bookingcinema/RegisterComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/bookingcinema/RegisterComponent.vue?vue&type=template&id=2649f18c&scoped=true&":
+/*!****************************************************************************************************************!*\
+  !*** ./resources/js/components/bookingcinema/RegisterComponent.vue?vue&type=template&id=2649f18c&scoped=true& ***!
+  \****************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterComponent_vue_vue_type_template_id_2649f18c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./RegisterComponent.vue?vue&type=template&id=2649f18c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/bookingcinema/RegisterComponent.vue?vue&type=template&id=2649f18c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterComponent_vue_vue_type_template_id_2649f18c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RegisterComponent_vue_vue_type_template_id_2649f18c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -55557,6 +56858,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_bookingcinema_HomeComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/bookingcinema/HomeComponent */ "./resources/js/components/bookingcinema/HomeComponent.vue");
 /* harmony import */ var _components_bookingcinema_SeatComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/bookingcinema/SeatComponent */ "./resources/js/components/bookingcinema/SeatComponent.vue");
 /* harmony import */ var _components_bookingcinema_DetailMovieComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/bookingcinema/DetailMovieComponent */ "./resources/js/components/bookingcinema/DetailMovieComponent.vue");
+/* harmony import */ var _components_bookingcinema_LoginComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/bookingcinema/LoginComponent */ "./resources/js/components/bookingcinema/LoginComponent.vue");
+/* harmony import */ var _components_bookingcinema_RegisterComponent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/bookingcinema/RegisterComponent */ "./resources/js/components/bookingcinema/RegisterComponent.vue");
+/* harmony import */ var _components_bookingcinema_ConfirmComponent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/bookingcinema/ConfirmComponent */ "./resources/js/components/bookingcinema/ConfirmComponent.vue");
+
+
+
 
 
 
@@ -55571,13 +56878,25 @@ var routes = [{
     path: '/',
     component: _components_bookingcinema_HomeComponent__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
-    path: '/booking',
+    path: '/book',
     name: 'booking-movie',
     component: _components_bookingcinema_SeatComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
     path: '/movie/:id',
     component: _components_bookingcinema_DetailMovieComponent__WEBPACK_IMPORTED_MODULE_5__["default"],
     name: 'detail-movie'
+  }, {
+    path: '/login',
+    component: _components_bookingcinema_LoginComponent__WEBPACK_IMPORTED_MODULE_6__["default"],
+    name: 'login'
+  }, {
+    path: '/register',
+    component: _components_bookingcinema_RegisterComponent__WEBPACK_IMPORTED_MODULE_7__["default"],
+    name: 'register'
+  }, {
+    path: '/confirm',
+    component: _components_bookingcinema_ConfirmComponent__WEBPACK_IMPORTED_MODULE_8__["default"],
+    name: 'confirm'
   }]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({

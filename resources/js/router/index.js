@@ -4,6 +4,9 @@ import Master from '../components/layouts/MasterComponent'
 import Home from '../components/bookingcinema/HomeComponent'
 import Seat from '../components/bookingcinema/SeatComponent'
 import DetailMovie from '../components/bookingcinema/DetailMovieComponent'
+import Login from '../components/bookingcinema/LoginComponent'
+import Register from '../components/bookingcinema/RegisterComponent'
+import Confirm from '../components/bookingcinema/ConfirmComponent'
 
 Vue.use(VueRouter);
 
@@ -17,7 +20,7 @@ const routes = [
                 component: Home,
             },
             {
-                path: '/booking',
+                path: '/book',
                 name: 'booking-movie',
                 component: Seat,
             },
@@ -25,6 +28,21 @@ const routes = [
                 path:  '/movie/:id',
                 component: DetailMovie,
                 name: 'detail-movie',
+            },
+            {
+                path:  '/login',
+                component: Login,
+                name: 'login',
+            },
+            {
+                path:  '/register',
+                component: Register,
+                name: 'register',
+            },
+            {
+                path:  '/confirm',
+                component: Confirm,
+                name: 'confirm',
             },
         ]
     },
