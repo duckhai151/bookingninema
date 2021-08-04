@@ -7,6 +7,7 @@ import DetailMovie from '../components/bookingcinema/DetailMovieComponent'
 import Login from '../components/bookingcinema/LoginComponent'
 import Register from '../components/bookingcinema/RegisterComponent'
 import Confirm from '../components/bookingcinema/ConfirmComponent'
+import Finish from '../components/bookingcinema/FinishComponent'
 
 Vue.use(VueRouter);
 
@@ -42,6 +43,11 @@ const routes = [
             {
                 path:  '/confirm',
                 component: Confirm,
+                name: 'confirm',
+            },
+            {
+                path:  '/finish',
+                component: Finish,
                 name: 'confirm',
             },
         ]

@@ -36,6 +36,11 @@ Route::namespace('API')->group(function () {
         Route::get('/room', 'RoomController@room');
     });
 
+    /* Ticket */
+    Route::prefix('ticket')->group(function () {
+        Route::post('/store', 'TicketController@store');
+    });
+
     /* Showtime */
     Route::prefix('showtime')->group(function () {
         Route::get('/', 'ShowTimeController@showTimeByMovie');

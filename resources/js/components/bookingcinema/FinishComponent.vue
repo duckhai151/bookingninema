@@ -1,6 +1,7 @@
 <template>
     <div class="container" style="margin-top:70px;">
-        <h2>Xác nhận đặt vé</h2>
+        <h2>Đặt vé thành công</h2>
+        <h3>Vui lòng kiểm tra thông tin dưới đây và qua email</h3>
         <div class="row">
             <div class="col-md-6">
                 <div class="booking-details">
@@ -10,12 +11,12 @@
                         <li>Email </li>
                     </ul>
                     <ul class="book-right">
-                        <input style="border: none" type="text" v-model="this.user.name">
-                        <input style="border: none" type="text" v-model="this.user.phone">
-                        <input style="border: none" type="text" v-model="this.user.email">
+                        <li>: {{ this.user.name }}</li>
+                        <li>: {{ this.user.phone  }}</li>
+                        <li>: {{ this.user.email }}</li>
                     </ul>
                     <div class="clear"></div>
-<!--                    <button v-on:click="bookCinema()" class="checkout-button">Đặt ngay</button>-->
+                    <!--                    <button v-on:click="bookCinema()" class="checkout-button">Đặt ngay</button>-->
                     <div id="legend"></div>
                 </div>
             </div>
@@ -35,13 +36,12 @@
                         <li>: {{ this.listBooking.date }}</li>
                         <li>: {{ this.listBooking.time }}</li>
                         <li>: {{ this.listBooking.seatName.join(', ') }}</li>
-                        <li>: {{ this.listBooking.price }}</li>
+                        <li>: 120000</li>
                     </ul>
                     <div class="clear"></div>
                     <ul id="selected-seats" class="scrollbar scrollbar1"></ul>
                 </div>
             </div>
-            <button v-on:click="finishBooking()" class="btn btn-primary float-right">Hoàn thành đặt vé</button>
         </div>
     </div>
 </template>
@@ -67,16 +67,7 @@ export default {
             this.user = JSON.parse(localStorage.getItem('user'));
         },
         setUserInfo() {
-            localStorage.setItem("userInfo", JSON.stringify(this.user));
-        },
-        finishBooking() {
-            this.setUserInfo();
-            axios.post('ticket/store', {
-                user: this.user,
-                listBooking: this.listBooking,
-            }).then(res => {
-                this.$router.push({path: '/finish'});
-            });
+            localStorage.setItem("userInfor", JSON.stringify(listBooking));
         }
     }
 }

@@ -27,18 +27,24 @@
 							<router-link class="nav-link" to="/">Trang chủ</router-link>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="about.html">Về chúng tôi</a>
+							<a class="nav-link" >Giới thiệu</a>
 						</li>
-						<li class="nav-item">
+                        <li class="nav-item">
+                            <a class="nav-link" >Liên hệ</a>
+                        </li>
+						<li v-if="isEmptyObj(this.user)" class="nav-item">
                             <router-link tag="a" class="nav-link" to="/login">Đăng nhập</router-link>
 						</li>
+                        <li v-else class="nav-item">
+                            <a v-on:click="logOut()" class="nav-link">{{ this.user.name }}</a>
+                        </li>
 					</ul>
 
 					<!--/search-right-->
 					<!--/search-right-->
 					<div class="search-right">
-						<a href="#search" class="btn search-hny mr-lg-3 mt-lg-0 mt-4" title="search">Tìm kiếm <span
-								class="fa fa-search ml-3" aria-hidden="true"></span></a>
+<!--						<a href="#search" class="btn search-hny mr-lg-3 mt-lg-0 mt-4" title="search">Tìm kiếm <span-->
+<!--								class="fa fa-search ml-3" aria-hidden="true"></span></a>-->
 						<!-- search popup -->
 						<div id="search" class="pop-overlay">
 							<div class="popup">
@@ -89,7 +95,36 @@
 
 <script>
 export default {
-
+    data() {
+        return {
+            user: {}
+        }
+    },
+    created() {
+        this.getAuth();
+    },
+    methods: {
+        getAuth() {
+            axios.get('auth', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                }
+            }).then(res => {
+                this.user = res.data;
+            });
+        },
+        logOut() {
+            axios.post('logout', {
+                token: localStorage.getItem("token")
+            }).then(res => {
+                this.$router.push({path: '/login'});
+                location.reload();
+            });
+        },
+        isEmptyObj(obj) {
+            return Object.keys(obj).length === 0;
+        }
+    }
 }
 </script>
 

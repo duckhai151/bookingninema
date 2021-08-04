@@ -30,7 +30,9 @@ class MailNotify extends Mailable
     public function build()
     {
         return $this->from('evilboys151@gmail.com')
-            ->view('admin.mail.ticket')
+            ->view('admin.mail.ticket')->with([
+                'data' => $this->data
+            ])
             ->subject('Thông tin đặt vé online - NDK Cinema');
     }
 }

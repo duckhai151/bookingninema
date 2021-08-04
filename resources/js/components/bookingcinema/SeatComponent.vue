@@ -1,52 +1,52 @@
 <template>
-<div class="container" style="margin-top:70px;">
-	<div class="row">
-		<div class="col-md-8">
-			<div class="main">
-			<h2></h2>
-			<div class="demo">
-				<div id="seat-map">
-				<div class="seatCharts-container">
-					<div class="front">MÀN HÌNH</div>
-					<div class="seatCharts-row">
-						<div v-for="(seat, index) in this.seats" role="checkbox" class="seatCharts-seat seatCharts-cell"
-                             v-on:click="choseSeat(index)" :class="getStatusSeat(index)">{{ seat.name }}
+        <div class="container" style="margin-top:70px;">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="main">
+                        <h2></h2>
+                        <div class="demo">
+                            <div id="seat-map">
+                                <div class="seatCharts-container">
+                                    <div class="front">MÀN HÌNH</div>
+                                    <div class="seatCharts-row">
+                                        <div v-for="(seat, index) in this.seats" role="checkbox" class="seatCharts-seat seatCharts-cell"
+                                             v-on:click="choseSeat(index)" :class="getStatusSeat(index)">{{ seat.name }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="clear:both"></div>
                         </div>
-					</div>
-				</div>
-				</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="booking-details">
+                        <ul class="book-left">
+                            <li>Phim </li>
+                            <li>Thời gian </li>
+                            <li>Giờ chiếu </li>
+                            <li>Ngày chiếu </li>
+                            <li>Ghế đã chọn</li>
+                            <li>Tổng tiền</li>
+                        </ul>
+                        <ul class="book-right">
+                            <li>: {{ this.movie.name }}</li>
+                            <li>: {{ this.movie.running_time }}</li>
+                            <li>: {{ this.showtime.time_showtime }}</li>
+                            <li>: {{ this.showtime.date_showtime }}</li>
+                            <li>: {{ this.listSeatName.join(', ') }}</li>
+                            <li>: <b><span id="total">{{ this.price}}</span> VNĐ</b></li>
+                        </ul>
+                        <div class="clear"></div>
+                        <ul id="selected-seats" class="scrollbar scrollbar1"></ul>
 
-				<div style="clear:both"></div>
-			</div>
-		    </div>
-		</div>
-		<div class="col-md-4">
-			<div class="booking-details">
-				<ul class="book-left">
-					<li>Phim </li>
-					<li>Thời gian </li>
-					<li>Giờ chiếu </li>
-					<li>Ngày chiếu </li>
-                    <li>Ghế đã chọn</li>
-                    <li>Tổng tiền</li>
-				</ul>
-				<ul class="book-right">
-					<li>: {{ this.movie.name }}</li>
-					<li>: {{ this.movie.running_time }}</li>
-					<li>: {{ this.showtime.time_showtime }}</li>
-					<li>: {{ this.showtime.date_showtime }}</li>
-                    <li>: {{ this.listSeatName.join(', ') }}</li>
-					<li>: <b><span id="total">{{ this.price}}</span> VNĐ</b></li>
-				</ul>
-				<div class="clear"></div>
-				<ul id="selected-seats" class="scrollbar scrollbar1"></ul>
-
-				<button v-on:click="bookCinema()" class="checkout-button">Đặt ngay</button>
-				<div id="legend"></div>
-				</div>
-		</div>
-	</div>
-</div>
+                        <button v-on:click="bookCinema()" class="checkout-button">Đặt ngay</button>
+                        <div id="legend"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </template>
 
 <script>
@@ -119,15 +119,19 @@ export default {
         bookCinema() {
             let listBooking = {
                 'seat' : this.listSeatChose,
+                'seatName' : this.listSeatName,
                 'movieName' : this.movie.name,
+                'movieTime' : this.movie.running_time,
                 'date' : this.showtime.date_showtime,
                 'time' : this.showtime.time_showtime,
+                'price' : this.price,
+                'showtimeId' : this.$route.params.showtimeId,
+                'movieId' : this.$route.params.movieId,
+                'roomId' : this.$route.params.roomId,
             };
             localStorage.setItem("listBooking", JSON.stringify(listBooking));
-            let test = JSON.parse(localStorage.getItem('listBooking'));
-            console.log(test);
             this.$router.push({path: '/confirm'});
-        }
+        },
     }
 }
 </script>

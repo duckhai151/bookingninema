@@ -37,6 +37,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($movies as $movie)
+                                        @action('my.hook', $movie)
                                         <tr>
                                             <td>{{ $movie->id }}</td>
                                             <td>{{ $movie->name }}</td>

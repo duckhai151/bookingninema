@@ -23,7 +23,7 @@ class MovieRepository extends BaseRepository implements MovieRepositoryInterface
 
     public function index()
     {
-        $movies = $this->model::paginate(5);
+        $movies = $this->model::paginate(100);
         return $movies;
     }
 

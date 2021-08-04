@@ -8,14 +8,14 @@
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
 							<li class="nav-item">
 								<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
-									PHIM SẮP CHIẾU
+                                    PHIM ĐANG CHIẾU
 								</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
-									PHIM ĐANG CHIẾU
-								</a>
-							</li>
+<!--							<li class="nav-item">-->
+<!--								<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">-->
+<!--									PHIM ĐANG CHIẾU-->
+<!--								</a>-->
+<!--							</li>-->
 						</ul>
 					</div>
 				</div>
@@ -24,8 +24,8 @@
 						<div class="box16">
                             <router-link :to="{ name: 'detail-movie', params: { id: movie.id }}">
                                 <figure>
-                                    <img v-if="movie.image != ''" class="img-fluid" :src="'cinema/movies/' + movie.image" alt="">
-                                    <img v-else class="img-fluid" src="cinema/movies/default.jpg" alt="">
+                                    <img style="height: 370px;" v-if="movie.image != ''" class="img-fluid" :src="'cinema/movies/' + movie.image" alt="">
+                                    <img style="height: 370px;" v-else class="img-fluid" src="cinema/movies/default.jpg" alt="">
                                 </figure>
 
                                 <span class="fa fa-play video-icon" aria-hidden="true"></span>
@@ -81,12 +81,13 @@
                         </div>
                         <div v-else class="tab-pane container fade" :id="'menu'+index">
                             <router-link v-for="show in showtime" v-bind:key="show.id"
-                                         :to="{name: 'booking-movie',
-                                         params: {
-                                             showtimeId: show.id,
-                                             roomId: show.room_id,
-                                             movieId: show.movie_id,
-                                         }}"
+                                         :to="{
+                                            name: 'booking-movie',
+                                            params: {
+                                                showtimeId: show.id,
+                                                roomId: show.room_id,
+                                                movieId: show.movie_id,
+                                            }}"
                                          data-dismiss="modal" tag="a" class="btn btn-secondary">{{ show.time_showtime }}
                             </router-link>
                         </div>
@@ -110,7 +111,6 @@ export default {
     },
     created() {
         this.listMovie();
-        this.getAuth();
     },
     methods: {
         listMovie() {
@@ -125,19 +125,9 @@ export default {
                     movieId: movieId
                 }
             }).then(res => {
-                console.log(res.data)
                 this.showtimes = res.data;
             });
         },
-        getAuth() {
-            axios.get('auth', {
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem("token")}`
-                }
-            }).then(res => {
-                console.log(res.data);
-            });
-        }
     },
 }
 </script>

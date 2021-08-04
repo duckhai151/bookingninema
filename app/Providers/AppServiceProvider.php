@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use TorMorten\Eventy\Facades\Eventy;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Eventy::addAction('my.hook', function($data) {
+//            $data->name = 'Test';
+//            $data->save();
+        });
     }
 }

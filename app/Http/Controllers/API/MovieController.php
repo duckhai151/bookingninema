@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 
 
+use App\Http\Requests\CreateMovieRequest;
 use App\Jobs\SendEmail;
 use App\Repositories\Movie\MovieRepositoryInterface;
 use App\Models\Movie;
@@ -27,20 +28,44 @@ class MovieController extends ApiController
         return view(ADMIN_MOVIE_INDEX, ['movies' => $movies]);
     }
 
-    public function create(Request $request)
+    public function create()
     {
         return view(ADMIN_MOVIE_CREATE);
+    }
+
+    public function store(CreateMovieRequest $request)
+    {
+        try {
+            $movie = new Movie();
+            $movie->name = $request->get('name');
+            $movie->movie_type_id = $request->get('movie_type_id');
+            $movie->description = $request->get('description');
+            $movie->director = $request->get('director');
+            $movie->running_time = $request->get('running_time');
+            $movie->cast = $request->get('cast');
+            $movie->language = $request->get('language');
+            $movie->start_date = $request->get('start_date');
+            $movie->end_date = $request->get('end_date');
+            if($request->hasFile('image'))
+            {
+                $file = $request->file('image');
+                $extension = $file->getClientOriginalExtension();
+                $imageName = $file->getClientOriginalName();
+                $filename = time(). $imageName .'.'.$extension;
+                $file->move(public_path('cinema/movies'), $filename);
+                $movie->image = $filename;
+            }
+            $movie->save();
+            return redirect()->route(ADMIN_MOVIE_INDEX);
+        } catch (\Exception $exception) {
+            return $exception;
+        }
     }
 
     public function edit(Request $request, $id)
     {
         $movies = 'movie';
         return view(ADMIN_MOVIE_EDIT, ['movies' => $movies]);
-    }
-
-    public function testMail()
-    {
-        SendEmail::dispatch('abc', 'def');
     }
 
     public function getPost($id)

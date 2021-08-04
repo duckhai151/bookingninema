@@ -1,8 +1,8 @@
 <template>
-  	
 	<footer class="w3l-footer" >
+        <hr>
 		<section class="footer-inner-main" style="background-color: white">
-			<div class="footer-hny-grids py-5">
+			<div class="footer-hny-grids">
 				<div class="container py-lg-4">
 					<div class="text-txt">
 						<div class="right-side">
@@ -25,75 +25,72 @@
 								</div>
 							</div>
 							<div class="row footer-links">
-
-
-								<div class="col-md-3 col-sm-6 sub-two-right mt-5">
-									<h6>Movies</h6>
+								<div class="col-md-4 col-sm-6 sub-two-right mt-5">
 									<ul>
-										<li><a href="#">Movies</a></li>
-										<li><a href="#">Videos</a></li>
-										<li><a href="#">English Movies</a></li>
-										<li><a href="#">Tailor</a></li>
-										<li><a href="#">Upcoming Movies</a></li>
-										<li><a href="contact.html">Contact Us</a></li>
+										<li><h5 style="color: black"><b>NDK Cinema</b></h5></li>
+                                        <li><a class="text-left" href="#">Trang chủ</a></li>
+                                        <li><a class="text-left" href="#">Giới thiệu</a></li>
+										<li><a class="text-left" href="#">Chính sách bảo mật</a></li>
+										<li><a class="text-left" href="#">Liên hệ</a></li>
 									</ul>
 								</div>
-								<div class="col-md-3 col-sm-6 sub-two-right mt-5">
-									<h6>Information</h6>
-									<ul>
-										<li><a href="index.html">Home</a> </li>
-										<li><a href="about.html">About</a> </li>
-										<li><a href="#">Tv Series</a> </li>
-										<li><a href="#">Blogs</a> </li>
-										<li><a href="#">Login</a></li>
-										<li><a href="contact.html">Contact</a></li>
-									</ul>
-								</div>
-								<div class="col-md-3 col-sm-6 sub-two-right mt-5">
-									<h6>Locations</h6>
-									<ul>
-										<li><a href="genre.html">Asia</a></li>
-										<li><a href="genre.html">France</a></li>
-										<li><a href="genre.html">Taiwan</a></li>
-										<li><a href="genre.html">United States</a></li>
-										<li><a href="genre.html">Korea</a></li>
-										<li><a href="genre.html">United Kingdom</a></li>
-									</ul>
-								</div>
-								<div class="col-md-3 col-sm-6 sub-two-right mt-5">
-									<h6>Newsletter</h6>
-									<form action="#" class="subscribe mb-3" method="post">
-										<input type="email" name="email" placeholder="Your Email Address" required="">
-										<button><span class="fa fa-envelope-o"></span></button>
-									</form>
-									<p>Enter your email and receive the latest news, updates and special offers from us.
-									</p>
-								</div>
+                                <div class="col-md-4 col-sm-6 sub-two-right mt-5">
+                                    <ul>
+                                        <li><h5 style="color: black"><b>Điều khoản sử dụng</b></h5></li>
+                                        <li><a class="text-left" href="#">Trang chủ</a></li>
+                                        <li><a class="text-left" href="#">Giới thiệu</a></li>
+                                        <li><a class="text-left" href="#">Chính sách bảo mật</a></li>
+                                        <li><a class="text-left" href="#">Liên hệ</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 col-sm-6 sub-two-right mt-5">
+                                    <ul>
+                                        <li><h5 style="color: black"><b>Kết nối với chúng tôi</b></h5></li>
+                                        <div>
+                                            <span style="margin-left: 15px">
+                                                <a class="text-left" href="#">
+                                                    <i class="fa fa-facebook-official fa-3x" aria-hidden="true"></i>
+                                                </a>
+                                            </span>
+                                            <span style="margin-left: 15px">
+                                                <a class="text-left" href="#">
+                                                    <i class="fa fa-instagram fa-3x" aria-hidden="true"></i>
+                                                </a>
+                                            </span>
+                                            <span style="margin-left: 15px">
+                                                <a class="text-left" href="#">
+                                                    <i class="fa fa-twitter fa-3x" aria-hidden="true"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </ul>
+                                </div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			</div>
-			<div class="below-section">
+            <hr>
+            <div class="footer-hny-grids">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="text-left"><b>CÔNG TY NDK CINEMA VIETNAM</b></h5>
+                            <p class="text-left">Địa Chỉ: Tầng 2, Rivera Park Saigon - Số 7/28 Thành Thái, P.14, Q.10, TPHCM.</p>
+                            <p class="text-left">Hotline: 0123123123</p>
+                            <p class="text-left"> COPYRIGHT 2017 CJ CGV. All RIGHTS RESERVED .</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="below-section">
 				<div class="container">
 					<div class="copyright-footer">
 						<div class="columns text-lg-left">
 							<p>&copy; 2020 ProShowz. All rights reserved | Designed by <a
 									href="https://w3layouts.com">W3layouts</a></p>
 						</div>
-
-						<ul class="social text-lg-right">
-							<li><a href="#facebook"><span class="fa fa-facebook" aria-hidden="true"></span></a>
-							</li>
-							<li><a href="#linkedin"><span class="fa fa-linkedin" aria-hidden="true"></span></a>
-							</li>
-							<li><a href="#twitter"><span class="fa fa-twitter" aria-hidden="true"></span></a>
-							</li>
-							<li><a href="#google"><span class="fa fa-google-plus" aria-hidden="true"></span></a>
-							</li>
-
-						</ul>
 					</div>
 				</div>
 			</div>

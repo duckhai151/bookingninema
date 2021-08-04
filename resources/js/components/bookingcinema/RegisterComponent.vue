@@ -128,7 +128,6 @@ export default {
                 birthday : this.birthday,
                 phone : this.phone,
             }).then(res => {
-                console.log(res.data)
                 this.$router.push({path: '/login'});
             });
         }

@@ -161,6 +161,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        TorMorten\Eventy\EventServiceProvider::class,
+        TorMorten\Eventy\EventBladeServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -231,6 +233,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'Eventy' => TorMorten\Eventy\Facades\Events::class,
     ],
 
 ];

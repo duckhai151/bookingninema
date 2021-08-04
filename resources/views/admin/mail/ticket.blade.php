@@ -135,43 +135,42 @@
 </head>
 <body>
 <h3>Cảm ơn bạn đã đặt vé online. Dưới đây là thông tin về vé bạn đã đặt :</h3>
-<div class="cardWrap">
-    <div class="card cardLeft">
+<div class="cardWrap" style="margin-left: 70px; display: flex;">
+    <div class="card cardLeft" style="height: 160px; ">
         <h1>NDK <span>Cinema</span></h1>
         <div class="title">
-            <h2>Mắt biêc</h2>
+            <h2>{{ $data->movieName   }}</h2>
             <span>Phim</span>
         </div>
         <div class="name">
-            <h2>Nguyễn Đức Khải</h2>
+            <h2>{{ $data->name }}</h2>
             <span>Tên</span>
         </div>
         <div class="seat">
-            <h2>A1</h2>
-            <span>Số ghế</span>
+            <h2>{{ $data->date }}</h2>
+            <span>Ngày</span>
         </div>
         <div class="time">
-            <h2>16:00</h2>
-            <span>Thời gian</span>
+            <h2>{{ $data->time }}</h2>
+            <span>Giờ</span>
         </div>
 
     </div>
-    <div class="card cardRight">
+    <div class="card cardRight" style="height: 160px;">
         <div class="eye"></div>
         <div class="number">
-            <h3>A1</h3>
+            <h3>A2</h3>
             <span>Số ghế</span>
         </div>
         <div class="barcode"></div>
     </div>
-
 </div>
-<div style="display: inline-block">
+<div style="display: inline-block;">
     <h3>Vui lòng đưa mã QR cho nhân viên để có thể checkin. Xin cảm ơn !</h3>
 
     <img src="{!!$message->embedData(QrCode::format('png')->merge('ech.png', 0.3, true)
                         ->size(250)->errorCorrection('H')
-                        ->generate('https://192.168.43.28:8011/admin/movie'), 'ech.png', 'image/svg+xml')!!}">`
+                        ->generate('https://192.168.1.17:8011/admin/ticket/update/' . $data->ticketId), 'ech.png', 'image/svg+xml')!!}">`
 </div>
 </body>
 </html>
